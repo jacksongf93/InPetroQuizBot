@@ -356,6 +356,8 @@ def send_group_question(chat_id, index, session_id):
 
     poll_id = result["poll"]["id"]
     group_sessions[chat_id]["poll_message_id"] = result["message_id"]
+    group_sessions[chat_id]["current_poll_id"] = poll_id
+    group_sessions[chat_id].setdefault("finished_polls", set())
     poll_map[poll_id] = {
         "mode": "group",
         "chat_id": chat_id,
@@ -368,7 +370,7 @@ def send_group_question(chat_id, index, session_id):
     # Telegram itself closes the poll after open_period.
     # We wait a few seconds, publish the resolution, then send the next question.
     timer = threading.Timer(
-        seconds + 3,
+        seconds + 1,
         finish_group_question,
         args=(chat_id, poll_id, index, session_id)
     )
@@ -381,39 +383,65 @@ def finish_group_question(chat_id, poll_id, index, session_id):
     if not current or current.get("session_id") != session_id:
         return
 
+    finished = current.setdefault("finished_polls", set())
+    if poll_id in finished:
+        return
+
+    # Ignore a stale timer/update from an older question.
+    if current.get("current_poll_id") != poll_id:
+        return
+
+    finished.add(poll_id)
     q = QUESTIONS[index]
 
-    # Ensure it is closed even if Telegram's automatic closure is delayed.
+    # Backup closure. Normally Telegram already closed it through open_period.
     try:
-        tg("stopPoll", {
-            "chat_id": chat_id,
-            "message_id": current.get("poll_message_id", "")
-        })
+        message_id = current.get("poll_message_id")
+        if message_id:
+            tg("stopPoll", {
+                "chat_id": chat_id,
+                "message_id": message_id
+            })
     except Exception:
         pass
 
     tg("sendMessage", {
         "chat_id": chat_id,
-        "text": f'💡 {q["id"]} — Resolução\n{q.get("resolucao", "").strip()}'
+        "text": f'💡 {q["id"]} — Resolução
+{q.get("resolucao", "").strip()}'
     })
 
     poll_map.pop(poll_id, None)
+    current["current_poll_id"] = None
 
-    # Brief breathing room before next card.
+    # Small interval before the next card.
     timer = threading.Timer(
         4,
         send_group_question,
         args=(chat_id, index + 1, session_id)
     )
     timer.daemon = True
+    current["next_timer"] = timer
     timer.start()
 
 
 def start_group_quiz(chat_id):
+    old = group_sessions.get(chat_id)
+    if old:
+        for key in ("next_timer",):
+            timer = old.get(key)
+            try:
+                if timer:
+                    timer.cancel()
+            except Exception:
+                pass
+
     session_id = time.time_ns()
     group_sessions[chat_id] = {
         "session_id": session_id,
-        "index": 0
+        "index": 0,
+        "finished_polls": set(),
+        "current_poll_id": None
     }
 
     tg("sendMessage", {
@@ -432,6 +460,13 @@ def start_group_quiz(chat_id):
 
 def stop_group_quiz(chat_id):
     if chat_id in group_sessions:
+        current = group_sessions.get(chat_id, {})
+        timer = current.get("next_timer")
+        try:
+            if timer:
+                timer.cancel()
+        except Exception:
+            pass
         group_sessions.pop(chat_id, None)
         tg("sendMessage", {
             "chat_id": chat_id,
@@ -477,6 +512,18 @@ def handle_update(update):
                     "/reiniciar — volta à questão 1"
                 )
             })
+
+    poll = update.get("poll")
+    if poll and poll.get("is_closed"):
+        poll_id = poll.get("id")
+        info = poll_map.get(poll_id)
+        if info and info.get("mode") == "group":
+            finish_group_question(
+                info["chat_id"],
+                poll_id,
+                info["index"],
+                info["session_id"]
+            )
 
     pa = update.get("poll_answer")
     if pa:
@@ -533,7 +580,7 @@ def setup_webhook():
                     "url": url,
                     "drop_pending_updates": "true",
                     "allowed_updates": json.dumps(
-                        ["message", "poll_answer"]
+                        ["message", "poll_answer", "poll"]
                     )
                 }
             )
