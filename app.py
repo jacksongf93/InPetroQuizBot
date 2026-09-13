@@ -407,8 +407,7 @@ def finish_group_question(chat_id, poll_id, index, session_id):
 
     tg("sendMessage", {
         "chat_id": chat_id,
-        "text": f'💡 {q["id"]} — Resolução
-{q.get("resolucao", "").strip()}'
+        "text": f'💡 {q["id"]} — Resolução\n{q.get("resolucao", "").strip()}'
     })
 
     poll_map.pop(poll_id, None)
