@@ -1,9 +1,7 @@
-
 import io
 import json
 import os
 import random
-import textwrap
 import threading
 import time
 from pathlib import Path
@@ -22,8 +20,14 @@ with open(BASE / "questions.json", "r", encoding="utf-8") as f:
 
 app = Flask(__name__)
 
-sessions = {}      # user_id -> {"index": int}
-poll_map = {}      # poll_id -> {"chat_id": int, "user_id": int, "next_index": int}
+# Individual mode: one session per user.
+sessions = {}
+
+# poll_id -> metadata
+poll_map = {}
+
+# Group mode: one timed session per chat.
+group_sessions = {}
 
 GREEN = "#006837"
 GOLD = "#FFB300"
@@ -43,8 +47,12 @@ def tg(method, payload=None, files=None, timeout=30):
 
 def font(size, bold=False):
     candidates = [
-        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
-        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf" if bold else "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf"
+        if bold else
+        "/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf",
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Bold.ttf"
+        if bold else
+        "/usr/share/fonts/truetype/liberation2/LiberationSans-Regular.ttf",
     ]
     for p in candidates:
         if os.path.exists(p):
@@ -81,17 +89,18 @@ def render_card(q, shuffled):
     W = 1080
     pad = 72
 
-    # Estimate canvas height from text lengths, then crop.
     img = Image.new("RGB", (W, 1800), "white")
     d = ImageDraw.Draw(img)
 
     logo = Image.open(BASE / "logo_inpetro.png").convert("RGBA")
     max_logo_w, max_logo_h = 360, 190
     scale = min(max_logo_w / logo.width, max_logo_h / logo.height)
-    logo = logo.resize((int(logo.width * scale), int(logo.height * scale)), Image.LANCZOS)
+    logo = logo.resize(
+        (int(logo.width * scale), int(logo.height * scale)),
+        Image.LANCZOS
+    )
     img.paste(logo, (pad, 42), logo)
 
-    # ID badge
     badge_f = font(34, True)
     badge_text = q["id"]
     bb = d.textbbox((0, 0), badge_text, font=badge_f)
@@ -99,12 +108,11 @@ def render_card(q, shuffled):
     bh = 64
     bx = W - pad - bw
     by = 74
-    d.rounded_rectangle((bx, by, bx+bw, by+bh), radius=24, fill=GREEN)
-    d.text((bx+26, by+11), badge_text, font=badge_f, fill="white")
+    d.rounded_rectangle((bx, by, bx + bw, by + bh), radius=24, fill=GREEN)
+    d.text((bx + 26, by + 11), badge_text, font=badge_f, fill="white")
 
-    # Accent line
-    d.rounded_rectangle((pad, 235, W-pad, 245), radius=5, fill=GREEN)
-    d.rounded_rectangle((pad, 245, pad+210, 251), radius=3, fill=GOLD)
+    d.rounded_rectangle((pad, 235, W - pad, 245), radius=5, fill=GREEN)
+    d.rounded_rectangle((pad, 245, pad + 210, 251), radius=3, fill=GOLD)
 
     theme_f = font(27, True)
     q_f = font(35, False)
@@ -112,38 +120,61 @@ def render_card(q, shuffled):
     alt_letter_f = font(31, True)
 
     y = 292
-    d.text((pad, y), f'{q["tema"]} • {q["dificuldade"]}', font=theme_f, fill=GREEN)
+    d.text(
+        (pad, y),
+        f'{q["tema"]} • {q["dificuldade"]}',
+        font=theme_f,
+        fill=GREEN
+    )
     y += 60
 
-    y = draw_wrapped(d, q["enunciado"], (pad, y), q_f, W-2*pad, TEXT, 13)
+    y = draw_wrapped(
+        d, q["enunciado"], (pad, y), q_f, W - 2 * pad, TEXT, 13
+    )
     y += 38
 
-    # Only a neutral cue for visual questions; never print the hidden description.
-    if q.get("visual"):
-        cue = "Considere o esquema/figura técnica indicado no enunciado."
-        d.rounded_rectangle((pad, y, W-pad, y+78), radius=18, outline=GOLD, width=3)
-        d.text((pad+24, y+20), cue, font=font(25, False), fill=MUTED)
-        y += 112
+    # The actual technical visual will be embedded in a later visual pass.
+    # Do not show a generic "consider the figure" box when no figure was rendered.
 
     for i, alt in enumerate(shuffled):
         letter = LETTERS[i]
-        lines = wrap_by_pixels(d, alt["texto"], alt_f, W - 2*pad - 92)
+        lines = wrap_by_pixels(d, alt["texto"], alt_f, W - 2 * pad - 92)
         line_h = alt_f.getbbox("Ag")[3] - alt_f.getbbox("Ag")[1]
         box_h = max(70, len(lines) * (line_h + 10) + 28)
 
-        d.rounded_rectangle((pad, y, W-pad, y+box_h), radius=18, outline="#D8D8D8", width=2)
-        d.rounded_rectangle((pad+16, y+14, pad+68, y+66), radius=16, fill="#F2F7F4")
-        d.text((pad+29, y+18), letter, font=alt_letter_f, fill=GREEN)
+        d.rounded_rectangle(
+            (pad, y, W - pad, y + box_h),
+            radius=18,
+            outline="#D8D8D8",
+            width=2
+        )
+        d.rounded_rectangle(
+            (pad + 16, y + 14, pad + 68, y + 66),
+            radius=16,
+            fill="#F2F7F4"
+        )
+        d.text(
+            (pad + 29, y + 18),
+            letter,
+            font=alt_letter_f,
+            fill=GREEN
+        )
 
         ty = y + 18
         for line in lines:
-            d.text((pad+90, ty), line, font=alt_f, fill=TEXT)
+            d.text((pad + 90, ty), line, font=alt_f, fill=TEXT)
             ty += line_h + 10
+
         y += box_h + 18
 
     footer_y = y + 18
-    d.line((pad, footer_y, W-pad, footer_y), fill="#E8E8E8", width=2)
-    d.text((pad, footer_y+25), "In Petro • Plataforma do Conhecimento", font=font(23, False), fill=MUTED)
+    d.line((pad, footer_y, W - pad, footer_y), fill="#E8E8E8", width=2)
+    d.text(
+        (pad, footer_y + 25),
+        "In Petro • Plataforma do Conhecimento",
+        font=font(23, False),
+        fill=MUTED
+    )
     y = footer_y + 80
 
     crop_h = min(max(y, 1050), 1800)
@@ -154,37 +185,101 @@ def short_explanation(q):
     s = q.get("resolucao", "").strip()
     if len(s) <= 195:
         return s
-    # Telegram quiz explanation limit is 200 chars.
     return s[:192].rsplit(" ", 1)[0] + "…"
 
 
-def send_question(chat_id, user_id, index):
-    if index >= len(QUESTIONS):
-        sessions.pop(user_id, None)
-        tg("sendMessage", {
-            "chat_id": chat_id,
-            "text": "✅ Simulado concluído. Você chegou ao fim das 40 questões do In Petro."
-        })
-        return
+def question_time(q):
+    """
+    Automatic per-question timing for group mode.
 
-    q = QUESTIONS[index]
+    Optional override:
+      "tempo_segundos": 45
 
-    # True randomization: shuffle whole alternative objects, preserving text/correct flag.
+    Otherwise the bot estimates from type + difficulty.
+    Telegram open_period must be between 5 seconds and 600 seconds.
+    """
+    manual = q.get("tempo_segundos")
+    if isinstance(manual, (int, float)):
+        return max(5, min(int(manual), 600))
+
+    difficulty = str(q.get("dificuldade", "")).strip().lower()
+    qtype = str(q.get("tipo", "")).strip().lower()
+
+    # Base by difficulty.
+    if "fácil" in difficulty or "facil" in difficulty:
+        seconds = 25
+    elif "difícil" in difficulty or "dificil" in difficulty:
+        seconds = 55
+    else:
+        seconds = 35
+
+    # Increase only when the task actually needs working time.
+    if "cálculo" in qtype or "calculo" in qtype:
+        seconds = max(seconds, 50)
+    if "tabela" in qtype:
+        seconds = max(seconds, 45)
+    if "analítica" in qtype or "analitica" in qtype:
+        seconds = max(seconds, 60)
+    if "situação" in qtype or "situacao" in qtype:
+        seconds = max(seconds, 40)
+
+    # Harder calculation/analysis questions deserve more time.
+    if ("difícil" in difficulty or "dificil" in difficulty) and (
+        "cálculo" in qtype or
+        "calculo" in qtype or
+        "analítica" in qtype or
+        "analitica" in qtype
+    ):
+        seconds = max(seconds, 75)
+
+    return max(20, min(seconds, 120))
+
+
+def shuffled_question(q):
     shuffled = list(q["alternativas"])
     random.SystemRandom().shuffle(shuffled)
-
     correct_index = next(i for i, a in enumerate(shuffled) if a["correta"])
+    return shuffled, correct_index
 
+
+def send_card(chat_id, q, shuffled, index):
     card = render_card(q, shuffled)
     bio = io.BytesIO()
     bio.name = f'{q["id"]}.png'
     card.save(bio, "PNG", optimize=True)
     bio.seek(0)
 
-    tg("sendPhoto",
-       {"chat_id": chat_id, "caption": f'{q["id"]} • Questão {index+1}/40'},
-       files={"photo": (bio.name, bio, "image/png")},
-       timeout=45)
+    tg(
+        "sendPhoto",
+        {
+            "chat_id": chat_id,
+            "caption": f'{q["id"]} • Questão {index + 1}/{len(QUESTIONS)}'
+        },
+        files={"photo": (bio.name, bio, "image/png")},
+        timeout=45
+    )
+
+
+# -------------------------
+# INDIVIDUAL MODE
+# -------------------------
+
+def send_individual_question(chat_id, user_id, index):
+    if index >= len(QUESTIONS):
+        sessions.pop(user_id, None)
+        tg("sendMessage", {
+            "chat_id": chat_id,
+            "text": (
+                f"✅ Simulado concluído. "
+                f"Você chegou ao fim das {len(QUESTIONS)} questões do In Petro."
+            )
+        })
+        return
+
+    q = QUESTIONS[index]
+    shuffled, correct_index = shuffled_question(q)
+
+    send_card(chat_id, q, shuffled, index)
 
     result = tg("sendPoll", {
         "chat_id": chat_id,
@@ -199,6 +294,7 @@ def send_question(chat_id, user_id, index):
 
     poll_id = result["poll"]["id"]
     poll_map[poll_id] = {
+        "mode": "individual",
         "chat_id": chat_id,
         "user_id": user_id,
         "next_index": index + 1
@@ -206,40 +302,204 @@ def send_question(chat_id, user_id, index):
     sessions[user_id] = {"index": index}
 
 
-def start_quiz(chat_id, user_id):
+def start_individual_quiz(chat_id, user_id):
     sessions[user_id] = {"index": 0}
     tg("sendMessage", {
         "chat_id": chat_id,
-        "text": "🟢 In Petro — Simulado de Instrumentação\n\n40 questões no padrão do banco In Petro. As alternativas são randomizadas a cada envio.\n\nComeçando agora."
+        "text": (
+            "🟢 In Petro — Simulado de Instrumentação\n\n"
+            f"{len(QUESTIONS)} questões no padrão do banco In Petro. "
+            "As alternativas são randomizadas a cada envio.\n\n"
+            "Modo individual: respondeu, avança."
+        )
     })
-    send_question(chat_id, user_id, 0)
+    send_individual_question(chat_id, user_id, 0)
+
+
+# -------------------------
+# GROUP TIMED MODE
+# -------------------------
+
+def send_group_question(chat_id, index, session_id):
+    current = group_sessions.get(chat_id)
+    if not current or current.get("session_id") != session_id:
+        return
+
+    if index >= len(QUESTIONS):
+        group_sessions.pop(chat_id, None)
+        tg("sendMessage", {
+            "chat_id": chat_id,
+            "text": (
+                f"🏁 In Petro — Quiz concluído!\n\n"
+                f"Fim das {len(QUESTIONS)} questões."
+            )
+        })
+        return
+
+    q = QUESTIONS[index]
+    shuffled, correct_index = shuffled_question(q)
+    seconds = question_time(q)
+
+    send_card(chat_id, q, shuffled, index)
+
+    result = tg("sendPoll", {
+        "chat_id": chat_id,
+        "question": f'{q["id"]} • {seconds}s',
+        "options": json.dumps(LETTERS, ensure_ascii=False),
+        "type": "quiz",
+        "is_anonymous": "false",
+        "correct_option_id": str(correct_index),
+        "explanation": short_explanation(q),
+        "allows_multiple_answers": "false",
+        "open_period": str(seconds)
+    })
+
+    poll_id = result["poll"]["id"]
+    group_sessions[chat_id]["poll_message_id"] = result["message_id"]
+    poll_map[poll_id] = {
+        "mode": "group",
+        "chat_id": chat_id,
+        "session_id": session_id,
+        "index": index
+    }
+
+    group_sessions[chat_id]["index"] = index
+
+    # Telegram itself closes the poll after open_period.
+    # We wait a few seconds, publish the resolution, then send the next question.
+    timer = threading.Timer(
+        seconds + 3,
+        finish_group_question,
+        args=(chat_id, poll_id, index, session_id)
+    )
+    timer.daemon = True
+    timer.start()
+
+
+def finish_group_question(chat_id, poll_id, index, session_id):
+    current = group_sessions.get(chat_id)
+    if not current or current.get("session_id") != session_id:
+        return
+
+    q = QUESTIONS[index]
+
+    # Ensure it is closed even if Telegram's automatic closure is delayed.
+    try:
+        tg("stopPoll", {
+            "chat_id": chat_id,
+            "message_id": current.get("poll_message_id", "")
+        })
+    except Exception:
+        pass
+
+    tg("sendMessage", {
+        "chat_id": chat_id,
+        "text": f'💡 {q["id"]} — Resolução\n{q.get("resolucao", "").strip()}'
+    })
+
+    poll_map.pop(poll_id, None)
+
+    # Brief breathing room before next card.
+    timer = threading.Timer(
+        4,
+        send_group_question,
+        args=(chat_id, index + 1, session_id)
+    )
+    timer.daemon = True
+    timer.start()
+
+
+def start_group_quiz(chat_id):
+    session_id = time.time_ns()
+    group_sessions[chat_id] = {
+        "session_id": session_id,
+        "index": 0
+    }
+
+    tg("sendMessage", {
+        "chat_id": chat_id,
+        "text": (
+            "🟢 In Petro — Quiz cronometrado\n\n"
+            f"{len(QUESTIONS)} questões.\n"
+            "⏱ O tempo varia automaticamente conforme o tipo e a dificuldade "
+            "de cada questão.\n\n"
+            "Questões diretas terão menos tempo; cálculos e análises terão mais."
+        )
+    })
+
+    send_group_question(chat_id, 0, session_id)
+
+
+def stop_group_quiz(chat_id):
+    if chat_id in group_sessions:
+        group_sessions.pop(chat_id, None)
+        tg("sendMessage", {
+            "chat_id": chat_id,
+            "text": "⏹ Quiz cronometrado encerrado."
+        })
 
 
 def handle_update(update):
     msg = update.get("message")
+
     if msg and msg.get("text"):
         text = msg["text"].strip()
         chat_id = msg["chat"]["id"]
+        chat_type = msg["chat"].get("type", "private")
         user_id = msg["from"]["id"]
 
         if text.startswith("/start") or text.startswith("/quiz"):
-            start_quiz(chat_id, user_id)
+            if chat_type in ("group", "supergroup"):
+                start_group_quiz(chat_id)
+            else:
+                start_individual_quiz(chat_id, user_id)
+
+        elif text.startswith("/grupo"):
+            start_group_quiz(chat_id)
+
+        elif text.startswith("/parar"):
+            stop_group_quiz(chat_id)
+
         elif text.startswith("/reiniciar"):
-            start_quiz(chat_id, user_id)
+            if chat_type in ("group", "supergroup"):
+                start_group_quiz(chat_id)
+            else:
+                start_individual_quiz(chat_id, user_id)
+
         elif text.startswith("/ajuda"):
             tg("sendMessage", {
                 "chat_id": chat_id,
-                "text": "Comandos:\n/quiz — iniciar o simulado\n/reiniciar — voltar à questão 1"
+                "text": (
+                    "Comandos:\n"
+                    "/quiz — inicia o quiz\n"
+                    "/grupo — inicia o modo cronometrado\n"
+                    "/parar — encerra o quiz do grupo\n"
+                    "/reiniciar — volta à questão 1"
+                )
             })
 
     pa = update.get("poll_answer")
     if pa:
         poll_id = pa["poll_id"]
-        info = poll_map.pop(poll_id, None)
-        if info:
-            # Small delay so the user sees Telegram's native correction/explanation first.
+        info = poll_map.get(poll_id)
+
+        if not info:
+            return
+
+        # Individual mode advances immediately after the answer.
+        if info.get("mode") == "individual":
+            poll_map.pop(poll_id, None)
             time.sleep(1.2)
-            send_question(info["chat_id"], info["user_id"], info["next_index"])
+            send_individual_question(
+                info["chat_id"],
+                info["user_id"],
+                info["next_index"]
+            )
+
+        # Group mode NEVER advances on the first person's answer.
+        # The timer controls the entire group.
+        elif info.get("mode") == "group":
+            return
 
 
 @app.get("/")
@@ -250,8 +510,11 @@ def health():
 @app.post("/webhook")
 def webhook():
     update = request.get_json(silent=True) or {}
-    # Reply immediately; process in background to avoid Telegram timeout.
-    threading.Thread(target=handle_update, args=(update,), daemon=True).start()
+    threading.Thread(
+        target=handle_update,
+        args=(update,),
+        daemon=True
+    ).start()
     return jsonify(ok=True)
 
 
@@ -259,10 +522,21 @@ def setup_webhook():
     if not APP_URL:
         print("WEBHOOK_URL/RENDER_EXTERNAL_URL not available yet.")
         return
+
     url = APP_URL + "/webhook"
+
     for attempt in range(12):
         try:
-            result = tg("setWebhook", {"url": url, "drop_pending_updates": "true"})
+            result = tg(
+                "setWebhook",
+                {
+                    "url": url,
+                    "drop_pending_updates": "true",
+                    "allowed_updates": json.dumps(
+                        ["message", "poll_answer"]
+                    )
+                }
+            )
             print("Webhook configured:", result, url)
             return
         except Exception as e:
@@ -270,7 +544,7 @@ def setup_webhook():
             time.sleep(5)
 
 
-# Configure the Telegram webhook when the module is loaded by Gunicorn/Render.
+# Configure webhook when Gunicorn/Render imports the module.
 threading.Thread(target=setup_webhook, daemon=True).start()
 
 if __name__ == "__main__":
