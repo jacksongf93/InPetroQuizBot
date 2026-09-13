@@ -1,0 +1,1653 @@
+[
+  {
+    "id": "IP-I-001",
+    "topico": 13,
+    "tema": "Eletrônica analógica e digital",
+    "subtema": "Valor eficaz (RMS)",
+    "dificuldade": "Média",
+    "tipo": "Cálculo",
+    "visual": null,
+    "enunciado": "Durante a verificação de um condicionador de sinais, um técnico observa no osciloscópio uma tensão senoidal com valor de pico igual a 10 V. O valor eficaz (RMS) dessa tensão, em volts, é",
+    "alternativas": [
+      {
+        "texto": "5√2",
+        "correta": true,
+        "justificativa": "Correta. Para uma senoide, Vrms = Vp/√2 = 10/√2 = 5√2 V."
+      },
+      {
+        "texto": "10√2",
+        "correta": false,
+        "justificativa": "Incorreta. Multiplicar o valor de pico por √2 fornece valor maior que o pico, o que não corresponde ao RMS de uma senoide."
+      },
+      {
+        "texto": "5",
+        "correta": false,
+        "justificativa": "Incorreta. O RMS não é a metade do valor de pico."
+      },
+      {
+        "texto": "10",
+        "correta": false,
+        "justificativa": "Incorreta. 10 V é o valor de pico informado."
+      },
+      {
+        "texto": "20",
+        "correta": false,
+        "justificativa": "Incorreta. Esse valor corresponde ao valor pico a pico, não ao RMS."
+      }
+    ],
+    "resolucao": "Para uma senoide: Vrms = Vp/√2. Logo, Vrms = 10/√2 = 5√2 ≈ 7,07 V.",
+    "ficha_visual": "Card offline com senoide marcada em Vp=10 V e fórmula Vrms=Vp/√2.",
+    "alvo_video": "valor eficaz RMS de sinal senoidal"
+  },
+  {
+    "id": "IP-I-002",
+    "topico": 2,
+    "tema": "Calibração, rastreabilidade e VIM",
+    "subtema": "Incerteza padrão combinada",
+    "dificuldade": "Média",
+    "tipo": "Tabela + cálculo",
+    "visual": {
+      "tipo": "tabela",
+      "descricao": "Tabela com u(x)=0,09; u(y)=0,12; u(z)=0,12."
+    },
+    "enunciado": "Em uma calibração, o resultado R é obtido por R = x + y - z. As grandezas são independentes e apresentam incertezas padrão u(x)=0,09, u(y)=0,12 e u(z)=0,12. A incerteza padrão combinada de R é, aproximadamente,",
+    "alternativas": [
+      {
+        "texto": "0,19",
+        "correta": true,
+        "justificativa": "Correta. uc = √(0,09²+0,12²+0,12²) = √0,0369 ≈ 0,192."
+      },
+      {
+        "texto": "0,33",
+        "correta": false,
+        "justificativa": "Incorreta. Somar diretamente as incertezas não é a regra de combinação para grandezas independentes."
+      },
+      {
+        "texto": "0,12",
+        "correta": false,
+        "justificativa": "Incorreta. Esse é apenas o valor de uma das incertezas individuais."
+      },
+      {
+        "texto": "0,09",
+        "correta": false,
+        "justificativa": "Incorreta. Esse é apenas u(x)."
+      },
+      {
+        "texto": "0,27",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde à soma quadrática das componentes."
+      }
+    ],
+    "resolucao": "Para grandezas independentes em uma soma/subtração, combinam-se as incertezas em quadratura: uc=√[u(x)²+u(y)²+u(z)²]=√(0,0081+0,0144+0,0144)=√0,0369≈0,192.",
+    "ficha_visual": "Card offline com a regra de propagação em quadratura e o cálculo linha a linha.",
+    "alvo_video": "propagação e combinação de incertezas padrão"
+  },
+  {
+    "id": "IP-I-003",
+    "topico": 14,
+    "tema": "Mecânica dos fluidos",
+    "subtema": "Peso específico",
+    "dificuldade": "Média",
+    "tipo": "Situação + cálculo",
+    "visual": null,
+    "enunciado": "Um fluido de processo possui densidade relativa igual a 0,82. Considerando-se o peso específico da água igual a 10.000 N/m³, o peso específico desse fluido, em N/m³, é",
+    "alternativas": [
+      {
+        "texto": "8.200",
+        "correta": true,
+        "justificativa": "Correta. A densidade relativa é a razão entre os pesos específicos: γ=0,82×10.000=8.200 N/m³."
+      },
+      {
+        "texto": "12.200",
+        "correta": false,
+        "justificativa": "Incorreta. Não se soma a densidade relativa ao valor da água."
+      },
+      {
+        "texto": "820",
+        "correta": false,
+        "justificativa": "Incorreta. Há erro de uma ordem de grandeza."
+      },
+      {
+        "texto": "82.000",
+        "correta": false,
+        "justificativa": "Incorreta. Há erro de uma ordem de grandeza."
+      },
+      {
+        "texto": "1.220",
+        "correta": false,
+        "justificativa": "Incorreta. Esse valor não decorre da relação de densidade relativa."
+      }
+    ],
+    "resolucao": "dr = γfluido/γágua. Portanto, γfluido = 0,82×10.000 = 8.200 N/m³.",
+    "ficha_visual": "Card offline comparando densidade relativa, densidade e peso específico.",
+    "alvo_video": "densidade relativa e peso específico em mecânica dos fluidos"
+  },
+  {
+    "id": "IP-I-004",
+    "topico": 1,
+    "tema": "Metrologia científica",
+    "subtema": "Deriva instrumental",
+    "dificuldade": "Fácil",
+    "tipo": "Situação prática",
+    "visual": null,
+    "enunciado": "Um transmissor mantido sob condições praticamente constantes passa a indicar, ao longo de várias horas, valores lentamente crescentes, sem que haja mudança real do mensurando. Esse comportamento caracteriza",
+    "alternativas": [
+      {
+        "texto": "deriva",
+        "correta": true,
+        "justificativa": "Correta. Deriva é a variação lenta da indicação ao longo do tempo sem mudança correspondente no mensurando."
+      },
+      {
+        "texto": "histerese",
+        "correta": false,
+        "justificativa": "Incorreta. Histerese depende do sentido de aproximação ao mesmo valor de entrada."
+      },
+      {
+        "texto": "resolução",
+        "correta": false,
+        "justificativa": "Incorreta. Resolução é a menor variação perceptível/indicável."
+      },
+      {
+        "texto": "repetibilidade",
+        "correta": false,
+        "justificativa": "Incorreta. Repetibilidade descreve concordância entre resultados sob condições repetidas."
+      },
+      {
+        "texto": "sensibilidade",
+        "correta": false,
+        "justificativa": "Incorreta. Sensibilidade relaciona variação de saída e variação de entrada."
+      }
+    ],
+    "resolucao": "O elemento-chave é a mudança lenta da indicação com o passar do tempo, sem alteração correspondente no valor verdadeiro da grandeza: isso é deriva.",
+    "ficha_visual": "Card offline 'Deriva x Histerese x Repetibilidade' com exemplos curtos.",
+    "alvo_video": "deriva instrumental metrologia"
+  },
+  {
+    "id": "IP-I-005",
+    "topico": 13,
+    "tema": "Eletrônica analógica e digital",
+    "subtema": "Relação sinal/ruído",
+    "dificuldade": "Média",
+    "tipo": "Cálculo",
+    "visual": null,
+    "enunciado": "Em uma medição, o valor RMS do sinal útil é 2,0 V e o valor RMS do ruído é 0,020 V. Considerando SNR(dB)=20 log10(Vsinal/Vruído), a relação sinal/ruído é",
+    "alternativas": [
+      {
+        "texto": "40 dB",
+        "correta": true,
+        "justificativa": "Correta. A razão é 100 e 20log10(100)=40 dB."
+      },
+      {
+        "texto": "20 dB",
+        "correta": false,
+        "justificativa": "Incorreta. 20 dB resultaria de uma razão de amplitudes igual a 10."
+      },
+      {
+        "texto": "100 dB",
+        "correta": false,
+        "justificativa": "Incorreta. 100 é a razão linear de amplitudes, não o valor em dB."
+      },
+      {
+        "texto": "2 dB",
+        "correta": false,
+        "justificativa": "Incorreta. Confunde o valor RMS do sinal com a SNR."
+      },
+      {
+        "texto": "10 dB",
+        "correta": false,
+        "justificativa": "Incorreta. Não resulta da expressão fornecida."
+      }
+    ],
+    "resolucao": "Vs/Vr = 2/0,020 = 100. Então SNR=20log10(100)=20×2=40 dB.",
+    "ficha_visual": "Card offline com razão linear x dB e exemplo resolvido.",
+    "alvo_video": "relação sinal ruído SNR em dB"
+  },
+  {
+    "id": "IP-I-006",
+    "topico": 16,
+    "tema": "Dimensionamento e seleção",
+    "subtema": "Seleção de termopar",
+    "dificuldade": "Média",
+    "tipo": "Aplicação",
+    "visual": null,
+    "enunciado": "Um sensor deverá medir continuamente uma temperatura próxima de -180 °C. Considerando apenas a adequação da faixa de temperatura, o termopar mais apropriado entre as opções é o tipo",
+    "alternativas": [
+      {
+        "texto": "T",
+        "correta": true,
+        "justificativa": "Correta. O termopar tipo T é amplamente empregado em baixas temperaturas e cobre a região próxima de -180 °C."
+      },
+      {
+        "texto": "J",
+        "correta": false,
+        "justificativa": "Incorreta. O tipo J não é a escolha típica para temperaturas criogênicas tão baixas."
+      },
+      {
+        "texto": "R",
+        "correta": false,
+        "justificativa": "Incorreta. O tipo R é voltado a temperaturas elevadas."
+      },
+      {
+        "texto": "S",
+        "correta": false,
+        "justificativa": "Incorreta. O tipo S é voltado a temperaturas elevadas."
+      },
+      {
+        "texto": "B",
+        "correta": false,
+        "justificativa": "Incorreta. O tipo B é usado em faixas de alta temperatura."
+      }
+    ],
+    "resolucao": "A questão pede somente a faixa de temperatura. Para temperaturas muito baixas, o tipo T é uma escolha clássica, enquanto R, S e B são associados a temperaturas altas.",
+    "ficha_visual": "Card offline comparando faixas típicas dos termopares T, J, K, N, R, S e B.",
+    "alvo_video": "tipos de termopar e faixas de temperatura"
+  },
+  {
+    "id": "IP-I-007",
+    "topico": 4,
+    "tema": "Elementos finais de controle",
+    "subtema": "Simbologia de válvulas",
+    "dificuldade": "Média",
+    "tipo": "Visual",
+    "visual": {
+      "tipo": "imagem_original",
+      "descricao": "Desenho P&ID original de uma válvula borboleta flangeada, sem identificação textual."
+    },
+    "enunciado": "A figura apresenta a simbologia de uma válvula instalada entre flanges em uma linha de processo. Pela representação do elemento obturador, trata-se de uma válvula",
+    "alternativas": [
+      {
+        "texto": "borboleta",
+        "correta": true,
+        "justificativa": "Correta. O símbolo representa o disco característico da válvula borboleta."
+      },
+      {
+        "texto": "globo",
+        "correta": false,
+        "justificativa": "Incorreta. A simbologia de válvula globo é distinta."
+      },
+      {
+        "texto": "gaveta",
+        "correta": false,
+        "justificativa": "Incorreta. O elemento de fechamento da válvula gaveta é representado de outra forma."
+      },
+      {
+        "texto": "diafragma",
+        "correta": false,
+        "justificativa": "Incorreta. O símbolo não corresponde a diafragma."
+      },
+      {
+        "texto": "retenção",
+        "correta": false,
+        "justificativa": "Incorreta. A simbologia de retenção indica sentido de bloqueio do retorno."
+      }
+    ],
+    "resolucao": "A identificação é feita pela forma do obturador representado no símbolo. O disco central é característico da válvula borboleta.",
+    "ficha_visual": "Card offline comparando símbolos de borboleta, globo, esfera, gaveta e retenção.",
+    "alvo_video": "simbologia de válvulas em P&ID ISA"
+  },
+  {
+    "id": "IP-I-008",
+    "topico": 4,
+    "tema": "Elementos finais de controle",
+    "subtema": "Identificação física de válvula",
+    "dificuldade": "Fácil",
+    "tipo": "Visual",
+    "visual": {
+      "tipo": "imagem_original",
+      "descricao": "Ilustração técnica original em corte de válvula de esfera com esfera perfurada e alavanca."
+    },
+    "enunciado": "Na ilustração técnica, o elemento de fechamento é uma esfera perfurada que gira aproximadamente 90° para alinhar ou bloquear a passagem do fluido. A válvula mostrada é do tipo",
+    "alternativas": [
+      {
+        "texto": "esfera",
+        "correta": true,
+        "justificativa": "Correta. O obturador esférico perfurado identifica a válvula de esfera."
+      },
+      {
+        "texto": "gaveta",
+        "correta": false,
+        "justificativa": "Incorreta. A válvula gaveta usa uma cunha/disco com movimento linear."
+      },
+      {
+        "texto": "globo",
+        "correta": false,
+        "justificativa": "Incorreta. A válvula globo possui obturador e sede com movimento linear."
+      },
+      {
+        "texto": "agulha",
+        "correta": false,
+        "justificativa": "Incorreta. A válvula agulha emprega haste de ponta cônica."
+      },
+      {
+        "texto": "diafragma",
+        "correta": false,
+        "justificativa": "Incorreta. A válvula diafragma utiliza uma membrana flexível."
+      }
+    ],
+    "resolucao": "Esfera perfurada + movimento de 1/4 de volta = válvula de esfera.",
+    "ficha_visual": "Card offline com cortes simplificados de esfera, globo, gaveta, borboleta e diafragma.",
+    "alvo_video": "tipos construtivos de válvulas industriais"
+  },
+  {
+    "id": "IP-I-009",
+    "topico": 14,
+    "tema": "Mecânica dos fluidos",
+    "subtema": "Equação da continuidade",
+    "dificuldade": "Média",
+    "tipo": "Cálculo",
+    "visual": null,
+    "enunciado": "Água escoa em regime permanente por uma tubulação circular. O diâmetro interno diminui de 100 mm para 50 mm. Desprezando vazamentos e compressibilidade, a razão v2/v1 entre as velocidades médias nas duas seções é",
+    "alternativas": [
+      {
+        "texto": "4",
+        "correta": true,
+        "justificativa": "Correta. A área é proporcional a D²; ao reduzir o diâmetro à metade, a área cai a 1/4 e a velocidade quadruplica."
+      },
+      {
+        "texto": "2",
+        "correta": false,
+        "justificativa": "Incorreta. A área varia com o quadrado do diâmetro."
+      },
+      {
+        "texto": "1/2",
+        "correta": false,
+        "justificativa": "Incorreta. A velocidade aumenta na seção menor."
+      },
+      {
+        "texto": "1/4",
+        "correta": false,
+        "justificativa": "Incorreta. Esse é A2/A1, não v2/v1."
+      },
+      {
+        "texto": "1",
+        "correta": false,
+        "justificativa": "Incorreta. A velocidade não permanece igual quando a área varia e a vazão é constante."
+      }
+    ],
+    "resolucao": "Q=A1v1=A2v2. Como A2/A1=(50/100)²=1/4, então v2/v1=A1/A2=4.",
+    "ficha_visual": "Card offline com continuidade Q=Av e tubulação convergente.",
+    "alvo_video": "equação da continuidade mecânica dos fluidos"
+  },
+  {
+    "id": "IP-I-010",
+    "topico": 16,
+    "tema": "Dimensionamento e seleção",
+    "subtema": "Rangeabilidade / turndown",
+    "dificuldade": "Fácil",
+    "tipo": "Aplicação",
+    "visual": null,
+    "enunciado": "Um elemento de medição de vazão opera satisfatoriamente entre 12 m³/h e 96 m³/h. A razão de rejeição (turndown), definida por Qmáx/Qmín, é",
+    "alternativas": [
+      {
+        "texto": "8:1",
+        "correta": true,
+        "justificativa": "Correta. 96/12=8."
+      },
+      {
+        "texto": "12:1",
+        "correta": false,
+        "justificativa": "Incorreta. 12 é o valor mínimo da faixa, não a razão."
+      },
+      {
+        "texto": "84:1",
+        "correta": false,
+        "justificativa": "Incorreta. 84 é a diferença entre máximo e mínimo."
+      },
+      {
+        "texto": "0,125:1",
+        "correta": false,
+        "justificativa": "Incorreta. É a razão inversa."
+      },
+      {
+        "texto": "108:1",
+        "correta": false,
+        "justificativa": "Incorreta. É a soma dos extremos da faixa."
+      }
+    ],
+    "resolucao": "Turndown = Qmáx/Qmín = 96/12 = 8, portanto 8:1.",
+    "ficha_visual": "Card offline diferenciando range, span e turndown.",
+    "alvo_video": "turndown rangeabilidade medição de vazão"
+  },
+  {
+    "id": "IP-I-011",
+    "topico": 12,
+    "tema": "Sistemas instrumentados de segurança",
+    "subtema": "ESD e SIS",
+    "dificuldade": "Fácil",
+    "tipo": "Situação industrial",
+    "visual": null,
+    "enunciado": "Em uma unidade de processo, um sistema independente detecta uma condição perigosa e executa automaticamente o desligamento de emergência de equipamentos para levar o processo a um estado seguro. Esse sistema é caracterizado como",
+    "alternativas": [
+      {
+        "texto": "sistema instrumentado de segurança",
+        "correta": true,
+        "justificativa": "Correta. Um SIS executa funções instrumentadas de segurança para reduzir risco e levar o processo a estado seguro."
+      },
+      {
+        "texto": "malha de indicação local",
+        "correta": false,
+        "justificativa": "Incorreta. Indicação local não executa, por si só, uma função de segurança."
+      },
+      {
+        "texto": "sistema supervisório apenas",
+        "correta": false,
+        "justificativa": "Incorreta. Supervisão não implica função instrumentada de segurança independente."
+      },
+      {
+        "texto": "rede de manutenção",
+        "correta": false,
+        "justificativa": "Incorreta. Rede de manutenção não define função de proteção."
+      },
+      {
+        "texto": "malha de controle regulatório",
+        "correta": false,
+        "justificativa": "Incorreta. Controle regulatório mantém variáveis em operação normal; SIS atua diante de condições perigosas."
+      }
+    ],
+    "resolucao": "A presença de detecção de perigo + lógica + ação automática para estado seguro caracteriza uma função instrumentada de segurança dentro de um SIS.",
+    "ficha_visual": "Card offline mostrando Sensor → Lógica SIS → Elemento final → Estado seguro.",
+    "alvo_video": "SIS ESD sistemas instrumentados de segurança"
+  },
+  {
+    "id": "IP-I-012",
+    "topico": 15,
+    "tema": "Saúde e segurança do trabalho",
+    "subtema": "Isolamento de energia",
+    "dificuldade": "Média",
+    "tipo": "Situação industrial",
+    "visual": null,
+    "enunciado": "Antes de remover um transmissor de pressão conectado diretamente a uma linha de processo pressurizada, a conduta mais adequada é",
+    "alternativas": [
+      {
+        "texto": "isolar a tomada de processo, aliviar a pressão aprisionada e verificar condição segura antes da remoção",
+        "correta": true,
+        "justificativa": "Correta. A intervenção deve ocorrer somente após isolamento, despressurização e verificação da condição segura."
+      },
+      {
+        "texto": "afrouxar lentamente a conexão para usar o próprio vazamento como despressurização",
+        "correta": false,
+        "justificativa": "Incorreta. Isso expõe o trabalhador ao fluido e à energia do processo."
+      },
+      {
+        "texto": "desenergizar apenas o circuito de 24 Vcc do transmissor",
+        "correta": false,
+        "justificativa": "Incorreta. Desenergização elétrica não elimina a pressão do processo."
+      },
+      {
+        "texto": "colocar o controlador em manual e remover imediatamente o instrumento",
+        "correta": false,
+        "justificativa": "Incorreta. Colocar a malha em manual não substitui o isolamento físico do processo."
+      },
+      {
+        "texto": "retirar primeiro o cabo de sinal e depois abrir a conexão de processo",
+        "correta": false,
+        "justificativa": "Incorreta. A ordem dos cabos não elimina o risco de pressão aprisionada."
+      }
+    ],
+    "resolucao": "A energia de processo deve ser controlada antes da intervenção: isolar, aliviar/despressurizar e verificar a condição segura.",
+    "ficha_visual": "Card offline com sequência segura de isolamento de instrumento de processo.",
+    "alvo_video": "isolamento e despressurização para manutenção de instrumentação"
+  },
+  {
+    "id": "IP-I-013",
+    "topico": 17,
+    "tema": "Analisadores",
+    "subtema": "Medição de pH",
+    "dificuldade": "Média",
+    "tipo": "Conceitual",
+    "visual": null,
+    "enunciado": "Em um sistema convencional de medição de pH, o eletrodo de vidro responde principalmente à atividade de",
+    "alternativas": [
+      {
+        "texto": "íons hidrogênio",
+        "correta": true,
+        "justificativa": "Correta. O potencial do eletrodo de vidro depende da atividade dos íons H+ na solução."
+      },
+      {
+        "texto": "elétrons livres",
+        "correta": false,
+        "justificativa": "Incorreta. O princípio de pH não é a medida direta de elétrons livres."
+      },
+      {
+        "texto": "íons sódio exclusivamente",
+        "correta": false,
+        "justificativa": "Incorreta. Sódio pode causar interferência em certas condições, mas não é a grandeza primária do pH."
+      },
+      {
+        "texto": "oxigênio dissolvido",
+        "correta": false,
+        "justificativa": "Incorreta. Oxigênio dissolvido é medido por analisadores específicos."
+      },
+      {
+        "texto": "condutividade total",
+        "correta": false,
+        "justificativa": "Incorreta. Condutividade é outra variável analítica."
+      }
+    ],
+    "resolucao": "pH está relacionado à atividade dos íons H+. O eletrodo de vidro desenvolve um potencial dependente dessa atividade em relação a um eletrodo de referência.",
+    "ficha_visual": "Card offline com eletrodo de vidro, referência e relação pH ↔ H+.",
+    "alvo_video": "princípio de funcionamento do eletrodo de pH"
+  },
+  {
+    "id": "IP-I-014",
+    "topico": 12,
+    "tema": "Sistemas instrumentados de segurança",
+    "subtema": "Votação 2oo3",
+    "dificuldade": "Média",
+    "tipo": "Diagrama",
+    "visual": {
+      "tipo": "diagrama_original",
+      "descricao": "Três transmissores PT-101A/B/C ligados a um bloco lógico marcado 2oo3, acionando XV-101."
+    },
+    "enunciado": "O diagrama de uma função instrumentada de segurança utiliza três transmissores de pressão em votação 2oo3. Para que a lógica reconheça a condição de trip, é necessário que",
+    "alternativas": [
+      {
+        "texto": "pelo menos dois dos três canais indiquem a condição de trip",
+        "correta": true,
+        "justificativa": "Correta. 2oo3 significa 'two out of three': dois de três canais são suficientes para a atuação."
+      },
+      {
+        "texto": "apenas um dos três canais indique a condição de trip",
+        "correta": false,
+        "justificativa": "Incorreta. Isso corresponderia a lógica 1oo3."
+      },
+      {
+        "texto": "os três canais indiquem simultaneamente a condição de trip",
+        "correta": false,
+        "justificativa": "Incorreta. Isso corresponderia a 3oo3."
+      },
+      {
+        "texto": "exatamente dois canais estejam em falha de comunicação",
+        "correta": false,
+        "justificativa": "Incorreta. A votação se refere à condição lógica de demanda, não a esse critério."
+      },
+      {
+        "texto": "o primeiro transmissor a detectar o evento seja sempre o canal A",
+        "correta": false,
+        "justificativa": "Incorreta. A votação é independente da letra do canal."
+      }
+    ],
+    "resolucao": "Na notação MooN, M é a quantidade mínima de canais que deve votar pela atuação entre N canais disponíveis. Logo, 2oo3 exige pelo menos 2 votos.",
+    "ficha_visual": "Card offline comparando 1oo1, 1oo2, 2oo2 e 2oo3.",
+    "alvo_video": "arquiteturas de votação 1oo2 2oo3 SIS"
+  },
+  {
+    "id": "IP-I-015",
+    "topico": 11,
+    "tema": "Redes industriais",
+    "subtema": "Topologias",
+    "dificuldade": "Fácil",
+    "tipo": "Visual",
+    "visual": {
+      "tipo": "diagrama_original",
+      "descricao": "Um switch central conectado individualmente a quatro dispositivos de campo."
+    },
+    "enunciado": "No diagrama, quatro dispositivos estão ligados individualmente a um equipamento central de comunicação. Essa topologia de rede é denominada",
+    "alternativas": [
+      {
+        "texto": "estrela",
+        "correta": true,
+        "justificativa": "Correta. Em estrela, os nós se conectam a um ponto central."
+      },
+      {
+        "texto": "anel",
+        "correta": false,
+        "justificativa": "Incorreta. Em anel, cada nó se conecta aos vizinhos formando um circuito fechado."
+      },
+      {
+        "texto": "barramento",
+        "correta": false,
+        "justificativa": "Incorreta. Em barramento, os nós compartilham um meio principal comum."
+      },
+      {
+        "texto": "ponto a ponto",
+        "correta": false,
+        "justificativa": "Incorreta. Há vários nós conectados ao equipamento central."
+      },
+      {
+        "texto": "malha completa",
+        "correta": false,
+        "justificativa": "Incorreta. Os dispositivos não estão todos interligados entre si."
+      }
+    ],
+    "resolucao": "A presença de um nó central ao qual os demais se conectam caracteriza a topologia estrela.",
+    "ficha_visual": "Card offline comparando estrela, barramento, anel e árvore.",
+    "alvo_video": "topologias de redes industriais estrela barramento anel"
+  },
+  {
+    "id": "IP-I-016",
+    "topico": 13,
+    "tema": "Eletrônica analógica e digital",
+    "subtema": "Conversão A/D",
+    "dificuldade": "Média",
+    "tipo": "Circuito/diagrama",
+    "visual": {
+      "tipo": "diagrama_original",
+      "descricao": "Sensor 0–8 V conectado a ADC ideal de 3 bits; indicação Vin=5,1 V; faixa dividida em 8 níveis de 1 V, códigos 000 a 111."
+    },
+    "enunciado": "Um ADC ideal de 3 bits cobre a faixa de 0 a 8 V, usando intervalos de quantização de 1 V. Para uma tensão de entrada de 5,1 V, o código digital de saída é",
+    "alternativas": [
+      {
+        "texto": "101",
+        "correta": true,
+        "justificativa": "Correta. 5,1 V pertence ao intervalo 5≤Vin<6 V, correspondente ao nível decimal 5, isto é, 101 em binário."
+      },
+      {
+        "texto": "100",
+        "correta": false,
+        "justificativa": "Incorreta. 100 corresponde ao nível decimal 4."
+      },
+      {
+        "texto": "110",
+        "correta": false,
+        "justificativa": "Incorreta. 110 corresponde ao nível decimal 6."
+      },
+      {
+        "texto": "111",
+        "correta": false,
+        "justificativa": "Incorreta. 111 corresponde ao nível decimal 7."
+      },
+      {
+        "texto": "011",
+        "correta": false,
+        "justificativa": "Incorreta. 011 corresponde ao nível decimal 3."
+      }
+    ],
+    "resolucao": "Com 3 bits existem 8 códigos. A questão já define intervalos de 1 V. Como 5,1 V está entre 5 e 6 V, o nível é 5 decimal = 101 binário.",
+    "ficha_visual": "Card offline com quantização de ADC de 3 bits e tabela decimal/binário.",
+    "alvo_video": "conversor analógico digital ADC resolução e código binário"
+  },
+  {
+    "id": "IP-I-017",
+    "topico": 5,
+    "tema": "Documentação e ISA S5.1",
+    "subtema": "Identificação de malha",
+    "dificuldade": "Média",
+    "tipo": "P&ID",
+    "visual": {
+      "tipo": "pid_original",
+      "descricao": "Tanque com LT-101 medindo nível, sinal para LIC-101 em painel e saída para LV-101 na linha de saída."
+    },
+    "enunciado": "No P&ID, o LT-101 envia sinal ao LIC-101, que comanda a LV-101 instalada na saída de um tanque. A variável controlada nessa malha é",
+    "alternativas": [
+      {
+        "texto": "nível",
+        "correta": true,
+        "justificativa": "Correta. A letra L identifica nível; LT mede nível e LIC indica/controla nível."
+      },
+      {
+        "texto": "vazão",
+        "correta": false,
+        "justificativa": "Incorreta. Vazão seria identificada pela letra F."
+      },
+      {
+        "texto": "pressão",
+        "correta": false,
+        "justificativa": "Incorreta. Pressão seria identificada pela letra P."
+      },
+      {
+        "texto": "temperatura",
+        "correta": false,
+        "justificativa": "Incorreta. Temperatura seria identificada pela letra T como primeira letra."
+      },
+      {
+        "texto": "densidade",
+        "correta": false,
+        "justificativa": "Incorreta. A identificação mostrada é explicitamente de nível."
+      }
+    ],
+    "resolucao": "Na identificação ISA, a primeira letra informa a variável medida/iniciadora. Em LT e LIC, L = level (nível). A LV é a válvula final da mesma malha.",
+    "ficha_visual": "Card offline explicando LT, LIC e LV e a leitura básica de uma malha ISA.",
+    "alvo_video": "ISA 5.1 identificação LT LIC LV malha de nível"
+  },
+  {
+    "id": "IP-I-018",
+    "topico": 15,
+    "tema": "Saúde e segurança do trabalho",
+    "subtema": "Energia residual",
+    "dificuldade": "Fácil",
+    "tipo": "Situação industrial",
+    "visual": null,
+    "enunciado": "Após fechar as válvulas de bloqueio de uma linha de impulso de um transmissor diferencial, o técnico ainda deve considerar que",
+    "alternativas": [
+      {
+        "texto": "pode existir pressão residual aprisionada e ela deve ser aliviada de forma segura",
+        "correta": true,
+        "justificativa": "Correta. O bloqueio não garante ausência de energia residual no trecho isolado."
+      },
+      {
+        "texto": "a pressão desaparece instantaneamente em qualquer configuração",
+        "correta": false,
+        "justificativa": "Incorreta. Pode permanecer fluido pressurizado entre bloqueios."
+      },
+      {
+        "texto": "basta desligar o indicador local para eliminar o risco",
+        "correta": false,
+        "justificativa": "Incorreta. Indicação elétrica não elimina energia de processo."
+      },
+      {
+        "texto": "o manifold sempre descarrega automaticamente a linha",
+        "correta": false,
+        "justificativa": "Incorreta. A configuração e a operação do manifold devem ser verificadas."
+      },
+      {
+        "texto": "a equalização aumenta necessariamente a pressão para o dobro",
+        "correta": false,
+        "justificativa": "Incorreta. Equalização não tem esse efeito geral."
+      }
+    ],
+    "resolucao": "Isolamento não é sinônimo de energia zero. O trecho pode manter fluido e pressão aprisionados; por isso é necessário alívio controlado e verificação.",
+    "ficha_visual": "Card offline sobre bloqueio, equalização, dreno e pressão residual.",
+    "alvo_video": "manifold transmissor diferencial isolamento e equalização"
+  },
+  {
+    "id": "IP-I-019",
+    "topico": 1,
+    "tema": "Metrologia científica",
+    "subtema": "Campo de tolerância",
+    "dificuldade": "Média",
+    "tipo": "Cálculo conceitual",
+    "visual": null,
+    "enunciado": "Uma dimensão nominal é 50,00 mm, com afastamento superior de +0,08 mm e afastamento inferior de -0,02 mm. O campo de tolerância é",
+    "alternativas": [
+      {
+        "texto": "0,10 mm",
+        "correta": true,
+        "justificativa": "Correta. Dimensão máxima=50,08 e mínima=49,98; a diferença é 0,10 mm."
+      },
+      {
+        "texto": "0,06 mm",
+        "correta": false,
+        "justificativa": "Incorreta. Subtrair os módulos dos afastamentos não fornece o campo."
+      },
+      {
+        "texto": "0,08 mm",
+        "correta": false,
+        "justificativa": "Incorreta. Esse é apenas o afastamento superior."
+      },
+      {
+        "texto": "0,02 mm",
+        "correta": false,
+        "justificativa": "Incorreta. Esse é o módulo do afastamento inferior."
+      },
+      {
+        "texto": "50,10 mm",
+        "correta": false,
+        "justificativa": "Incorreta. Campo de tolerância é uma largura, não uma dimensão absoluta próxima do nominal."
+      }
+    ],
+    "resolucao": "Máximo=50,08 mm; mínimo=49,98 mm. Campo de tolerância=50,08−49,98=0,10 mm.",
+    "ficha_visual": "Card offline com nominal, limite superior, limite inferior e campo de tolerância.",
+    "alvo_video": "campo de tolerância afastamentos dimensão nominal"
+  },
+  {
+    "id": "IP-I-020",
+    "topico": 6,
+    "tema": "Medição de variáveis de processo",
+    "subtema": "Sensor capacitivo",
+    "dificuldade": "Média",
+    "tipo": "Conceitual",
+    "visual": null,
+    "enunciado": "Em uma aplicação de medição de nível por capacitância, a subida do produto entre o eletrodo e a parede do tanque altera principalmente",
+    "alternativas": [
+      {
+        "texto": "a capacitância do conjunto, devido à mudança do dielétrico efetivo",
+        "correta": true,
+        "justificativa": "Correta. A presença do produto altera a permissividade/dielétrico e, portanto, a capacitância."
+      },
+      {
+        "texto": "a resistência elétrica do cabo de alimentação de forma proporcional ao nível",
+        "correta": false,
+        "justificativa": "Incorreta. O princípio primário não é a resistência do cabo."
+      },
+      {
+        "texto": "a frequência da rede elétrica de alimentação",
+        "correta": false,
+        "justificativa": "Incorreta. A frequência da rede não é a grandeza física usada para inferir o nível."
+      },
+      {
+        "texto": "a pressão atmosférica externa ao tanque",
+        "correta": false,
+        "justificativa": "Incorreta. Não é o princípio do sensor capacitivo."
+      },
+      {
+        "texto": "a massa do eletrodo metálico",
+        "correta": false,
+        "justificativa": "Incorreta. A massa do eletrodo permanece essencialmente constante."
+      }
+    ],
+    "resolucao": "C=εA/d. Na medição de nível, a presença do produto modifica o dielétrico efetivo ε ao redor da sonda, alterando C.",
+    "ficha_visual": "Card offline com capacitor, ε, A, d e aplicação em nível.",
+    "alvo_video": "medição de nível capacitiva princípio"
+  },
+  {
+    "id": "IP-I-021",
+    "topico": 9,
+    "tema": "Controle de processos",
+    "subtema": "Polos dominantes e desprezíveis",
+    "dificuldade": "Difícil",
+    "tipo": "Analítica",
+    "visual": null,
+    "enunciado": "Um sistema estável possui polos em -1, -2 e -100. Para a dinâmica dominante observada em escala de segundos, o polo em -100 tende a ser considerado",
+    "alternativas": [
+      {
+        "texto": "rápido e aproximadamente desprezível na dinâmica dominante",
+        "correta": true,
+        "justificativa": "Correta. Seu modo decai muito mais rapidamente do que os associados aos polos -1 e -2."
+      },
+      {
+        "texto": "o polo dominante por estar mais distante da origem",
+        "correta": false,
+        "justificativa": "Incorreta. Em sistemas estáveis, polos mais próximos do eixo imaginário tendem a dominar a resposta lenta."
+      },
+      {
+        "texto": "um integrador puro",
+        "correta": false,
+        "justificativa": "Incorreta. Integrador puro corresponde a polo na origem."
+      },
+      {
+        "texto": "um polo instável",
+        "correta": false,
+        "justificativa": "Incorreta. -100 está no semiplano esquerdo."
+      },
+      {
+        "texto": "um zero do sistema",
+        "correta": false,
+        "justificativa": "Incorreta. O enunciado o define como polo."
+      }
+    ],
+    "resolucao": "A constante de tempo associada a um polo real -a é aproximadamente 1/a. Para -100, τ≈0,01 s; para -1 e -2, τ≈1 s e 0,5 s. O modo de -100 desaparece muito antes.",
+    "ficha_visual": "Card offline mostrando polos no plano-s e relação com rapidez da resposta.",
+    "alvo_video": "polos dominantes resposta transitória sistemas de controle"
+  },
+  {
+    "id": "IP-I-022",
+    "topico": 2,
+    "tema": "Calibração, rastreabilidade e VIM",
+    "subtema": "Rastreabilidade metrológica",
+    "dificuldade": "Média",
+    "tipo": "Definição aplicada",
+    "visual": null,
+    "enunciado": "Um resultado de medição pode ser relacionado a uma referência por uma cadeia documentada e ininterrupta de calibrações, cada uma contribuindo para a incerteza de medição. Essa propriedade é denominada",
+    "alternativas": [
+      {
+        "texto": "rastreabilidade metrológica",
+        "correta": true,
+        "justificativa": "Correta. Essa é a ideia central da definição de rastreabilidade metrológica."
+      },
+      {
+        "texto": "repetibilidade",
+        "correta": false,
+        "justificativa": "Incorreta. Repetibilidade se refere à concordância entre resultados sob condições especificadas."
+      },
+      {
+        "texto": "histerese",
+        "correta": false,
+        "justificativa": "Incorreta. Histerese trata da diferença de indicação conforme o sentido de variação da entrada."
+      },
+      {
+        "texto": "resolução",
+        "correta": false,
+        "justificativa": "Incorreta. Resolução trata da menor variação distinguível/indicável."
+      },
+      {
+        "texto": "sensibilidade",
+        "correta": false,
+        "justificativa": "Incorreta. Sensibilidade relaciona variação da indicação com variação do mensurando."
+      }
+    ],
+    "resolucao": "Os elementos-chave são: relação com uma referência + cadeia ininterrupta e documentada de calibrações + contribuição de cada etapa para a incerteza.",
+    "ficha_visual": "Card offline com cadeia de rastreabilidade: instrumento → padrão de trabalho → padrão de referência → referência superior.",
+    "alvo_video": "VIM rastreabilidade metrológica cadeia de calibrações"
+  },
+  {
+    "id": "IP-I-023",
+    "topico": 14,
+    "tema": "Mecânica dos fluidos",
+    "subtema": "Tubo de Pitot",
+    "dificuldade": "Média",
+    "tipo": "Esquema + cálculo",
+    "visual": {
+      "tipo": "esquema_original",
+      "descricao": "Tubo de Pitot em duto; pressão dinâmica indicada como Δp=3.600 Pa; fluido de densidade 800 kg/m³."
+    },
+    "enunciado": "Em um escoamento ideal, um tubo de Pitot fornece uma pressão dinâmica de 3.600 Pa. Para um fluido com densidade de 800 kg/m³, usando Δp=ρv²/2, a velocidade do escoamento é",
+    "alternativas": [
+      {
+        "texto": "3 m/s",
+        "correta": true,
+        "justificativa": "Correta. v=√(2Δp/ρ)=√(7200/800)=√9=3 m/s."
+      },
+      {
+        "texto": "1,5 m/s",
+        "correta": false,
+        "justificativa": "Incorreta. Resulta de manipulação incorreta da raiz quadrada."
+      },
+      {
+        "texto": "4,5 m/s",
+        "correta": false,
+        "justificativa": "Incorreta. Não satisfaz a expressão fornecida."
+      },
+      {
+        "texto": "6 m/s",
+        "correta": false,
+        "justificativa": "Incorreta. Produziria pressão dinâmica quatro vezes maior."
+      },
+      {
+        "texto": "9 m/s",
+        "correta": false,
+        "justificativa": "Incorreta. 9 é o valor de v² obtido antes da raiz."
+      }
+    ],
+    "resolucao": "Δp=ρv²/2 → v=√(2Δp/ρ)=√(2×3600/800)=√9=3 m/s.",
+    "ficha_visual": "Card offline explicando pressão estática, total e dinâmica no Pitot.",
+    "alvo_video": "tubo de Pitot equação de Bernoulli velocidade"
+  },
+  {
+    "id": "IP-I-024",
+    "topico": 3,
+    "tema": "Transmissão e transmissores",
+    "subtema": "Tipos de transmissores",
+    "dificuldade": "Média",
+    "tipo": "Afirmativas",
+    "visual": null,
+    "enunciado": "Sobre transmissores industriais, considere: I. Sistemas pneumáticos do tipo bico-palheta podem ser afetados pela qualidade do ar de instrumentos. II. A transmissão digital é, por definição, sempre mais suscetível a interferência eletromagnética do que a transmissão analógica. III. Transmissores inteligentes podem incorporar microprocessamento, configuração e diagnóstico. É correto APENAS o que se afirma em",
+    "alternativas": [
+      {
+        "texto": "I e III",
+        "correta": true,
+        "justificativa": "Correta. I e III são válidas; II é uma generalização incorreta."
+      },
+      {
+        "texto": "I",
+        "correta": false,
+        "justificativa": "Incorreta. III também é correta."
+      },
+      {
+        "texto": "II",
+        "correta": false,
+        "justificativa": "Incorreta. II é a afirmativa problemática."
+      },
+      {
+        "texto": "II e III",
+        "correta": false,
+        "justificativa": "Incorreta. Inclui II, que é falsa."
+      },
+      {
+        "texto": "I, II e III",
+        "correta": false,
+        "justificativa": "Incorreta. II não pode ser aceita como regra geral."
+      }
+    ],
+    "resolucao": "I: correta — impurezas/umidade podem prejudicar componentes pneumáticos. II: falsa — não há regra geral de maior suscetibilidade digital. III: correta — microprocessamento e diagnóstico são características típicas de transmissores inteligentes.",
+    "ficha_visual": "Card offline comparando pneumático, 4–20 mA, digital e inteligente.",
+    "alvo_video": "transmissores pneumáticos analógicos digitais inteligentes"
+  },
+  {
+    "id": "IP-I-025",
+    "topico": 3,
+    "tema": "Transmissão e transmissores",
+    "subtema": "Escalonamento 4–20 mA",
+    "dificuldade": "Média",
+    "tipo": "Esquema + cálculo",
+    "visual": {
+      "tipo": "esquema_original",
+      "descricao": "Transmissor de temperatura 0–100 °C enviando 4–20 mA a um indicador; corrente indicada 12 mA."
+    },
+    "enunciado": "Um transmissor está configurado para 0 a 100 °C corresponder a 4 a 20 mA. Para uma saída de 12 mA, a temperatura medida é",
+    "alternativas": [
+      {
+        "texto": "50 °C",
+        "correta": true,
+        "justificativa": "Correta. 12 mA está no meio do span de 16 mA; portanto corresponde a 50% da faixa de 0–100 °C."
+      },
+      {
+        "texto": "12 °C",
+        "correta": false,
+        "justificativa": "Incorreta. Corrente e temperatura não possuem relação numérica direta em mA/°C."
+      },
+      {
+        "texto": "25 °C",
+        "correta": false,
+        "justificativa": "Incorreta. 25% da faixa corresponderia a 8 mA."
+      },
+      {
+        "texto": "75 °C",
+        "correta": false,
+        "justificativa": "Incorreta. 75% da faixa corresponderia a 16 mA."
+      },
+      {
+        "texto": "100 °C",
+        "correta": false,
+        "justificativa": "Incorreta. 100 °C corresponde a 20 mA."
+      }
+    ],
+    "resolucao": "Percentual=(12−4)/(20−4)=8/16=0,5. Temperatura=0+0,5×100=50 °C.",
+    "ficha_visual": "Card offline com fórmula geral de escalonamento 4–20 mA.",
+    "alvo_video": "escalonamento 4 20 mA LRV URV span"
+  },
+  {
+    "id": "IP-I-026",
+    "topico": 8,
+    "tema": "CLP e linguagens",
+    "subtema": "Lógica Ladder",
+    "dificuldade": "Média",
+    "tipo": "Ladder visual",
+    "visual": {
+      "tipo": "ladder_original",
+      "descricao": "Rung com contato A em série com dois ramos paralelos B e C, acionando bobina Y."
+    },
+    "enunciado": "No rung apresentado, A está em série com um paralelo formado por B e C. Considerando contatos normalmente abertos, a expressão booleana equivalente para a bobina Y é",
+    "alternativas": [
+      {
+        "texto": "Y = A · (B + C)",
+        "correta": true,
+        "justificativa": "Correta. Série representa AND e paralelo representa OR."
+      },
+      {
+        "texto": "Y = A + B · C",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde à estrutura série-paralelo mostrada."
+      },
+      {
+        "texto": "Y = A · B · C",
+        "correta": false,
+        "justificativa": "Incorreta. Exigiria B e C simultaneamente, mas eles estão em paralelo."
+      },
+      {
+        "texto": "Y = A + B + C",
+        "correta": false,
+        "justificativa": "Incorreta. A está em série com o conjunto paralelo."
+      },
+      {
+        "texto": "Y = (A + B) · C",
+        "correta": false,
+        "justificativa": "Incorreta. A estrutura booleana não corresponde ao rung."
+      }
+    ],
+    "resolucao": "Em Ladder, contatos em série realizam AND; ramos paralelos realizam OR. Logo, Y=A AND (B OR C).",
+    "ficha_visual": "Card offline traduzindo série/paralelo Ladder para AND/OR.",
+    "alvo_video": "lógica Ladder contatos série paralelo álgebra booleana"
+  },
+  {
+    "id": "IP-I-027",
+    "topico": 5,
+    "tema": "Documentação e ISA S5.1",
+    "subtema": "Matriz de causa e efeito",
+    "dificuldade": "Média",
+    "tipo": "Afirmativa conceitual",
+    "visual": null,
+    "enunciado": "Em um projeto de instrumentação, o documento mais adequado para representar, de forma tabular, quais ações automáticas devem ocorrer quando determinadas condições de processo ou eventos são detectados é a",
+    "alternativas": [
+      {
+        "texto": "matriz de causa e efeito",
+        "correta": true,
+        "justificativa": "Correta. Ela relaciona causas/eventos a efeitos/ações automáticas."
+      },
+      {
+        "texto": "lista de instrumentos",
+        "correta": false,
+        "justificativa": "Incorreta. A lista consolida dados de identificação dos instrumentos, não a lógica causa-efeito."
+      },
+      {
+        "texto": "folha de dados",
+        "correta": false,
+        "justificativa": "Incorreta. A folha de dados contém especificações de um equipamento/instrumento."
+      },
+      {
+        "texto": "planta de instrumentação",
+        "correta": false,
+        "justificativa": "Incorreta. A planta mostra disposição/localização física."
+      },
+      {
+        "texto": "lista de materiais",
+        "correta": false,
+        "justificativa": "Incorreta. A lista de materiais trata de quantidades e especificações de itens."
+      }
+    ],
+    "resolucao": "Quando o objetivo é relacionar eventos de entrada a ações automáticas de saída, o documento típico é a matriz de causa e efeito.",
+    "ficha_visual": "Card offline comparando fluxograma, lista, folha de dados, diagrama lógico, malha e matriz causa-efeito.",
+    "alvo_video": "documentação de instrumentação matriz de causa e efeito"
+  },
+  {
+    "id": "IP-I-028",
+    "topico": 13,
+    "tema": "Eletrônica analógica e digital",
+    "subtema": "Amplificador operacional inversor",
+    "dificuldade": "Média",
+    "tipo": "Circuito + cálculo",
+    "visual": {
+      "tipo": "circuito_original",
+      "descricao": "Amplificador operacional inversor ideal, Rin=5 kΩ, Rf=20 kΩ, entrada + aterrada, Vin=+0,5 V."
+    },
+    "enunciado": "No amplificador inversor ideal mostrado, Rin=5 kΩ, Rf=20 kΩ e Vin=+0,5 V. A tensão de saída é",
+    "alternativas": [
+      {
+        "texto": "-2,0 V",
+        "correta": true,
+        "justificativa": "Correta. Vo=-(Rf/Rin)Vin=-(20/5)×0,5=-2 V."
+      },
+      {
+        "texto": "+2,0 V",
+        "correta": false,
+        "justificativa": "Incorreta. O estágio é inversor, portanto muda o sinal."
+      },
+      {
+        "texto": "-0,125 V",
+        "correta": false,
+        "justificativa": "Incorreta. Usa a razão de resistências invertida."
+      },
+      {
+        "texto": "+0,125 V",
+        "correta": false,
+        "justificativa": "Incorreta. Além da razão invertida, ignora a inversão."
+      },
+      {
+        "texto": "-10 V",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde ao ganho -4 definido pelos resistores."
+      }
+    ],
+    "resolucao": "Ganho do inversor = -Rf/Rin = -20/5 = -4. Assim, Vo=-4×0,5=-2,0 V.",
+    "ficha_visual": "Card offline com circuito inversor e fórmula de ganho.",
+    "alvo_video": "amplificador operacional inversor cálculo de ganho"
+  },
+  {
+    "id": "IP-I-029",
+    "topico": 8,
+    "tema": "CLP e linguagens",
+    "subtema": "Elementos Ladder",
+    "dificuldade": "Fácil",
+    "tipo": "Conceitual",
+    "visual": null,
+    "enunciado": "Na linguagem Ladder, os elementos gráficos básicos usados para construir lógicas de comando incluem principalmente",
+    "alternativas": [
+      {
+        "texto": "contatos, bobinas e blocos de função",
+        "correta": true,
+        "justificativa": "Correta. Esses são elementos fundamentais da representação Ladder."
+      },
+      {
+        "texto": "apenas portas XOR e mapas de Karnaugh",
+        "correta": false,
+        "justificativa": "Incorreta. São conceitos de lógica digital, não os elementos gráficos básicos da Ladder."
+      },
+      {
+        "texto": "somente registradores e memórias ROM",
+        "correta": false,
+        "justificativa": "Incorreta. Não descreve a linguagem Ladder."
+      },
+      {
+        "texto": "válvulas pneumáticas e manômetros",
+        "correta": false,
+        "justificativa": "Incorreta. São elementos físicos de processo, não símbolos básicos da programação Ladder."
+      },
+      {
+        "texto": "apenas equações diferenciais",
+        "correta": false,
+        "justificativa": "Incorreta. Ladder é uma linguagem gráfica de programação."
+      }
+    ],
+    "resolucao": "Ladder deriva da representação de circuitos de relés: contatos e bobinas são centrais, além de temporizadores, contadores e blocos de função.",
+    "ficha_visual": "Card offline com contato NA, contato NF, bobina, timer e contador.",
+    "alvo_video": "elementos básicos da linguagem Ladder"
+  },
+  {
+    "id": "IP-I-030",
+    "topico": 11,
+    "tema": "Redes industriais",
+    "subtema": "PROFINET",
+    "dificuldade": "Fácil",
+    "tipo": "Aplicação",
+    "visual": null,
+    "enunciado": "Entre os protocolos a seguir, aquele desenvolvido para comunicação industrial baseada em Ethernet é o",
+    "alternativas": [
+      {
+        "texto": "PROFINET",
+        "correta": true,
+        "justificativa": "Correta. PROFINET é uma solução de comunicação industrial baseada em Ethernet."
+      },
+      {
+        "texto": "PROFIBUS DP",
+        "correta": false,
+        "justificativa": "Incorreta. PROFIBUS é um fieldbus serial, não uma arquitetura Ethernet."
+      },
+      {
+        "texto": "AS-Interface",
+        "correta": false,
+        "justificativa": "Incorreta. AS-i é uma rede de campo simples para sensores/atuadores."
+      },
+      {
+        "texto": "DeviceNet",
+        "correta": false,
+        "justificativa": "Incorreta. DeviceNet é baseado em CAN."
+      },
+      {
+        "texto": "HART clássico sobre 4–20 mA",
+        "correta": false,
+        "justificativa": "Incorreta. HART clássico superpõe comunicação digital ao sinal analógico 4–20 mA."
+      }
+    ],
+    "resolucao": "PROFINET utiliza Ethernet industrial. Os demais itens usam outras bases físicas/protocolos.",
+    "ficha_visual": "Card offline 'PROFINET x PROFIBUS x DeviceNet x AS-i x HART'.",
+    "alvo_video": "PROFINET Ethernet industrial comparação protocolos"
+  },
+  {
+    "id": "IP-I-031",
+    "topico": 13,
+    "tema": "Eletrônica analógica e digital",
+    "subtema": "Porta XOR",
+    "dificuldade": "Fácil",
+    "tipo": "Diagrama lógico",
+    "visual": {
+      "tipo": "diagrama_original",
+      "descricao": "Porta XOR de duas entradas A e B ligada a LED Y."
+    },
+    "enunciado": "Uma porta lógica XOR de duas entradas aciona um LED na saída Y. O LED estará aceso quando",
+    "alternativas": [
+      {
+        "texto": "A e B tiverem níveis lógicos diferentes",
+        "correta": true,
+        "justificativa": "Correta. XOR vale 1 quando as entradas diferem."
+      },
+      {
+        "texto": "A e B forem ambos 0 apenas",
+        "correta": false,
+        "justificativa": "Incorreta. 0 XOR 0 = 0."
+      },
+      {
+        "texto": "A e B forem ambos 1 apenas",
+        "correta": false,
+        "justificativa": "Incorreta. 1 XOR 1 = 0."
+      },
+      {
+        "texto": "pelo menos uma entrada for 1, inclusive quando ambas forem 1",
+        "correta": false,
+        "justificativa": "Incorreta. Essa descrição corresponde ao OR."
+      },
+      {
+        "texto": "A for sempre 0, independentemente de B",
+        "correta": false,
+        "justificativa": "Incorreta. Se A=0 e B=1, XOR=1."
+      }
+    ],
+    "resolucao": "Tabela XOR: 00→0, 01→1, 10→1, 11→0. Portanto a saída é 1 quando as entradas são diferentes.",
+    "ficha_visual": "Card offline com tabela-verdade XOR e comparação com OR.",
+    "alvo_video": "porta XOR tabela verdade lógica digital"
+  },
+  {
+    "id": "IP-I-032",
+    "topico": 6,
+    "tema": "Medição de variáveis de processo",
+    "subtema": "Resposta em frequência - fase",
+    "dificuldade": "Difícil",
+    "tipo": "Gráfico",
+    "visual": {
+      "tipo": "grafico_original",
+      "descricao": "Bode de fase com três transdutores; em 2 Hz: TP1≈0°, TP2≈+90°, TP3≈+180°."
+    },
+    "enunciado": "Um transdutor recebe uma entrada senoidal. No osciloscópio, a saída aparece aproximadamente em quadratura, adiantada 90° em relação à entrada, na frequência de 2 Hz. Pelo gráfico de fase apresentado, o transdutor utilizado é",
+    "alternativas": [
+      {
+        "texto": "TP2",
+        "correta": true,
+        "justificativa": "Correta. No gráfico, TP2 apresenta aproximadamente +90° em 2 Hz."
+      },
+      {
+        "texto": "TP1",
+        "correta": false,
+        "justificativa": "Incorreta. TP1 está próximo de 0° nessa frequência."
+      },
+      {
+        "texto": "TP3",
+        "correta": false,
+        "justificativa": "Incorreta. TP3 está próximo de 180° nessa frequência."
+      },
+      {
+        "texto": "qualquer um dos três",
+        "correta": false,
+        "justificativa": "Incorreta. As curvas possuem fases distintas em 2 Hz."
+      },
+      {
+        "texto": "nenhum, pois quadratura corresponde a 45°",
+        "correta": false,
+        "justificativa": "Incorreta. Quadratura corresponde a defasagem de 90°."
+      }
+    ],
+    "resolucao": "A informação temporal é convertida em fase: uma quadratura de 90°. Basta localizar, em 2 Hz, qual curva está em torno de +90°: TP2.",
+    "ficha_visual": "Card offline ensinando leitura de gráfico de fase e significado de 0°, 90° e 180°.",
+    "alvo_video": "resposta em frequência fase diagrama de Bode"
+  },
+  {
+    "id": "IP-I-033",
+    "topico": 6,
+    "tema": "Medição de variáveis de processo",
+    "subtema": "Resposta em frequência - amplitude",
+    "dificuldade": "Difícil",
+    "tipo": "Gráfico",
+    "visual": {
+      "tipo": "grafico_original",
+      "descricao": "Bode de magnitude com três transdutores; em 2 Hz: TP1=-6 dB, TP2=+8 dB, TP3≈0 dB."
+    },
+    "enunciado": "Para medir um sinal de pressão em torno de 2 Hz sem amplificá-lo nem atenuá-lo significativamente, deve-se escolher, pelo gráfico de magnitude, o transdutor",
+    "alternativas": [
+      {
+        "texto": "TP3",
+        "correta": true,
+        "justificativa": "Correta. Em torno de 2 Hz, TP3 está próximo de 0 dB, isto é, ganho aproximadamente unitário."
+      },
+      {
+        "texto": "TP2",
+        "correta": false,
+        "justificativa": "Incorreta. TP2 apresenta ganho positivo significativo, amplificando o sinal."
+      },
+      {
+        "texto": "TP1",
+        "correta": false,
+        "justificativa": "Incorreta. TP1 apresenta ganho negativo em dB, atenuando o sinal."
+      },
+      {
+        "texto": "TP1 ou TP2 indistintamente",
+        "correta": false,
+        "justificativa": "Incorreta. Ambos alteram significativamente a amplitude."
+      },
+      {
+        "texto": "nenhum, pois 0 dB representa ausência total de saída",
+        "correta": false,
+        "justificativa": "Incorreta. 0 dB corresponde a ganho de amplitude unitário."
+      }
+    ],
+    "resolucao": "Em magnitude, 0 dB significa ganho 1. A curva mais próxima de 0 dB em 2 Hz é TP3.",
+    "ficha_visual": "Card offline sobre dB: 0 dB=gain 1; positivo=amplificação; negativo=atenuação.",
+    "alvo_video": "diagrama de Bode magnitude 0 dB ganho unitário"
+  },
+  {
+    "id": "IP-I-034",
+    "topico": 9,
+    "tema": "Controle de processos",
+    "subtema": "Tipo do sistema e erro de regime",
+    "dificuldade": "Difícil",
+    "tipo": "Gráfico",
+    "visual": {
+      "tipo": "grafico_original",
+      "descricao": "Gráfico de rampa unitária e saída paralela à rampa após transitório, com erro constante e não nulo."
+    },
+    "enunciado": "A resposta de um sistema com realimentação unitária a uma entrada rampa apresenta, após o transitório, erro constante e finito. Esse comportamento é característico de um sistema do tipo",
+    "alternativas": [
+      {
+        "texto": "1",
+        "correta": true,
+        "justificativa": "Correta. Sistema tipo 1 apresenta erro finito para rampa unitária e erro nulo para degrau, sob condições usuais."
+      },
+      {
+        "texto": "0",
+        "correta": false,
+        "justificativa": "Incorreta. Tipo 0 apresenta erro infinito para rampa em regime permanente."
+      },
+      {
+        "texto": "2",
+        "correta": false,
+        "justificativa": "Incorreta. Tipo 2 apresenta erro nulo para rampa ideal."
+      },
+      {
+        "texto": "3",
+        "correta": false,
+        "justificativa": "Incorreta. Tipos superiores também não correspondem ao erro constante finito para rampa."
+      },
+      {
+        "texto": "4",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde ao padrão mostrado."
+      }
+    ],
+    "resolucao": "A classificação pelo número de integradores permite associar erros estacionários: tipo 0 → rampa com erro infinito; tipo 1 → rampa com erro finito; tipo 2 ou maior → rampa com erro nulo.",
+    "ficha_visual": "Card offline com tabela degrau/rampa/parábola versus tipo 0/1/2.",
+    "alvo_video": "tipo do sistema erro estacionário rampa"
+  },
+  {
+    "id": "IP-I-035",
+    "topico": 10,
+    "tema": "Controle PID e sintonia",
+    "subtema": "Ação integral",
+    "dificuldade": "Média",
+    "tipo": "Conceitual",
+    "visual": null,
+    "enunciado": "Em uma malha de controle estável submetida a uma referência constante, a principal contribuição da ação integral de um controlador PI/PID é",
+    "alternativas": [
+      {
+        "texto": "acumular o erro ao longo do tempo e atuar para eliminar o erro estacionário",
+        "correta": true,
+        "justificativa": "Correta. A ação integral responde ao erro acumulado e é empregada para remover offset em condições apropriadas."
+      },
+      {
+        "texto": "atuar somente sobre a velocidade instantânea de variação do erro",
+        "correta": false,
+        "justificativa": "Incorreta. Essa é a característica da ação derivativa."
+      },
+      {
+        "texto": "produzir saída proporcional apenas ao erro instantâneo",
+        "correta": false,
+        "justificativa": "Incorreta. Essa é a ação proporcional."
+      },
+      {
+        "texto": "eliminar qualquer possibilidade de oscilação independentemente da sintonia",
+        "correta": false,
+        "justificativa": "Incorreta. Ação integral mal ajustada pode aumentar oscilações."
+      },
+      {
+        "texto": "substituir a medição da variável de processo",
+        "correta": false,
+        "justificativa": "Incorreta. O controlador depende da realimentação da variável medida."
+      }
+    ],
+    "resolucao": "A parcela integral é proporcional à integral do erro. Enquanto existir erro persistente, sua contribuição continua se acumulando, conduzindo o controlador a corrigir o offset.",
+    "ficha_visual": "Card offline comparando ações P, I e D em uma mesma malha.",
+    "alvo_video": "ação integral controlador PID erro estacionário"
+  },
+  {
+    "id": "IP-I-036",
+    "topico": 9,
+    "tema": "Controle de processos",
+    "subtema": "Malha fechada",
+    "dificuldade": "Difícil",
+    "tipo": "Diagrama de blocos",
+    "visual": {
+      "tipo": "diagrama_original",
+      "descricao": "Malha negativa unitária com G(s)=k/(s+1) no ramo direto e H(s)=1."
+    },
+    "enunciado": "Para a malha de realimentação negativa unitária mostrada, com G(s)=k/(s+1), a função de transferência de malha fechada C(s)/R(s) é",
+    "alternativas": [
+      {
+        "texto": "k/(s+1+k)",
+        "correta": true,
+        "justificativa": "Correta. T=G/(1+G)= [k/(s+1)]/[1+k/(s+1)] = k/(s+1+k)."
+      },
+      {
+        "texto": "k/(s+1)",
+        "correta": false,
+        "justificativa": "Incorreta. Essa é a função do ramo direto, não da malha fechada."
+      },
+      {
+        "texto": "(s+1)/(s+1+k)",
+        "correta": false,
+        "justificativa": "Incorreta. O numerador não resulta da fórmula de realimentação."
+      },
+      {
+        "texto": "1/(s+1+k)",
+        "correta": false,
+        "justificativa": "Incorreta. O ganho k do ramo direto permanece no numerador."
+      },
+      {
+        "texto": "k/(s+1-k)",
+        "correta": false,
+        "justificativa": "Incorreta. Para realimentação negativa, o denominador é 1+GH."
+      }
+    ],
+    "resolucao": "T=G/(1+GH). Com H=1 e G=k/(s+1): T=[k/(s+1)]/[1+k/(s+1)] = k/(s+1+k).",
+    "ficha_visual": "Card offline com fórmula de malha fechada e simplificação algébrica.",
+    "alvo_video": "função de transferência malha fechada realimentação negativa"
+  },
+  {
+    "id": "IP-I-037",
+    "topico": 7,
+    "tema": "Manutenção e comissionamento",
+    "subtema": "Comissionamento",
+    "dificuldade": "Fácil",
+    "tipo": "Situação industrial",
+    "visual": null,
+    "enunciado": "Após a montagem de uma nova malha de controle, a equipe verifica instalação, interligações, identificação, funcionamento dos instrumentos e atendimento aos requisitos de projeto antes da entrada definitiva em operação. Esse conjunto de atividades integra o",
+    "alternativas": [
+      {
+        "texto": "comissionamento",
+        "correta": true,
+        "justificativa": "Correta. Comissionamento envolve verificações e testes para assegurar que sistemas instalados atendam aos requisitos antes da operação."
+      },
+      {
+        "texto": "descarte de equipamentos",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde à preparação para entrada em operação."
+      },
+      {
+        "texto": "inventário patrimonial",
+        "correta": false,
+        "justificativa": "Incorreta. Inventário não verifica funcionamento técnico do sistema."
+      },
+      {
+        "texto": "controle estatístico de processo",
+        "correta": false,
+        "justificativa": "Incorreta. É outra atividade, voltada ao acompanhamento estatístico."
+      },
+      {
+        "texto": "balanceamento de rede",
+        "correta": false,
+        "justificativa": "Incorreta. Não descreve o conjunto geral de verificações de uma nova instalação."
+      }
+    ],
+    "resolucao": "O comissionamento confirma que a instalação foi construída, interligada, configurada e testada de acordo com requisitos e está pronta para operação.",
+    "ficha_visual": "Card offline com sequência pré-comissionamento → testes → loop check → partida.",
+    "alvo_video": "comissionamento de instrumentação loop check"
+  },
+  {
+    "id": "IP-I-038",
+    "topico": 10,
+    "tema": "Controle PID e sintonia",
+    "subtema": "Relação Kp, Ti e Ki",
+    "dificuldade": "Média",
+    "tipo": "Analítica",
+    "visual": null,
+    "enunciado": "Um controlador PI é expresso por u(t)=Kp[e(t)+(1/Ti)∫e(t)dt]. Mantendo Ti constante e aumentando Kp, o ganho integral equivalente Ki=Kp/Ti",
+    "alternativas": [
+      {
+        "texto": "também aumenta",
+        "correta": true,
+        "justificativa": "Correta. Com Ti constante, Ki é diretamente proporcional a Kp."
+      },
+      {
+        "texto": "diminui",
+        "correta": false,
+        "justificativa": "Incorreta. A relação é Ki=Kp/Ti."
+      },
+      {
+        "texto": "permanece constante",
+        "correta": false,
+        "justificativa": "Incorreta. Só permaneceria constante se Ti fosse ajustado proporcionalmente."
+      },
+      {
+        "texto": "torna-se necessariamente zero",
+        "correta": false,
+        "justificativa": "Incorreta. Aumentar Kp não zera Ki."
+      },
+      {
+        "texto": "muda de sinal",
+        "correta": false,
+        "justificativa": "Incorreta. Não há mudança de sinal decorrente apenas do aumento de Kp."
+      }
+    ],
+    "resolucao": "Ki=Kp/Ti. Se Ti não muda, elevar Kp eleva Ki na mesma proporção.",
+    "ficha_visual": "Card offline relacionando formas paralela/ideal do PI e parâmetros Kp, Ti, Ki.",
+    "alvo_video": "controlador PI relação Kp Ti Ki"
+  },
+  {
+    "id": "IP-I-039",
+    "topico": 7,
+    "tema": "Manutenção e comissionamento",
+    "subtema": "Curva P-F",
+    "dificuldade": "Média",
+    "tipo": "Gráfico",
+    "visual": {
+      "tipo": "grafico_original",
+      "descricao": "Curva P-F com ponto P (falha potencial) antes de F (falha funcional), e intervalo P-F destacado."
+    },
+    "enunciado": "Na curva P-F, uma técnica de manutenção baseada em monitoramento de condição busca detectar a degradação após o ponto P e antes do ponto F. Essa abordagem é típica da manutenção",
+    "alternativas": [
+      {
+        "texto": "preditiva",
+        "correta": true,
+        "justificativa": "Correta. A preditiva monitora condição para identificar degradação e intervir antes da falha funcional."
+      },
+      {
+        "texto": "corretiva após falha",
+        "correta": false,
+        "justificativa": "Incorreta. A corretiva ocorre após a falha ou perda de função."
+      },
+      {
+        "texto": "exclusivamente emergencial",
+        "correta": false,
+        "justificativa": "Incorreta. Emergência não define monitoramento de condição."
+      },
+      {
+        "texto": "apenas administrativa",
+        "correta": false,
+        "justificativa": "Incorreta. O conceito é técnico de manutenção."
+      },
+      {
+        "texto": "somente de oportunidade",
+        "correta": false,
+        "justificativa": "Incorreta. Manutenção de oportunidade não é sinônimo de detecção no intervalo P-F."
+      }
+    ],
+    "resolucao": "P é o ponto em que a falha potencial se torna detectável; F é a falha funcional. Técnicas preditivas procuram identificar a condição degradada durante o intervalo P-F.",
+    "ficha_visual": "Card offline com Curva P-F e posicionamento de preditiva, preventiva e corretiva.",
+    "alvo_video": "curva PF manutenção preditiva RCM"
+  },
+  {
+    "id": "IP-I-040",
+    "topico": 9,
+    "tema": "Controle de processos",
+    "subtema": "Polos e zeros",
+    "dificuldade": "Difícil",
+    "tipo": "Analítica",
+    "visual": null,
+    "enunciado": "Considere G(s)=(s+4)/[s(s²+9)]. Os polos e o zero finitos de G(s) são, respectivamente,",
+    "alternativas": [
+      {
+        "texto": "polos em 0, +j3 e -j3; zero em -4",
+        "correta": true,
+        "justificativa": "Correta. O denominador zera em s=0 e s=±j3; o numerador zera em s=-4."
+      },
+      {
+        "texto": "polos em -4 e 0; zeros em +j3 e -j3",
+        "correta": false,
+        "justificativa": "Incorreta. Troca os papéis do numerador e do denominador."
+      },
+      {
+        "texto": "polos em 0, +3 e -3; zero em +4",
+        "correta": false,
+        "justificativa": "Incorreta. s²+9=0 fornece raízes imaginárias ±j3 e s+4=0 fornece -4."
+      },
+      {
+        "texto": "polos em +j4 e -j4; zero em -3",
+        "correta": false,
+        "justificativa": "Incorreta. Não corresponde às raízes dos polinômios dados."
+      },
+      {
+        "texto": "um único polo em -4 e nenhum zero",
+        "correta": false,
+        "justificativa": "Incorreta. O denominador possui três polos e o numerador um zero."
+      }
+    ],
+    "resolucao": "Polos: raízes do denominador s(s²+9)=0 → s=0, s=±j3. Zero: raiz do numerador s+4=0 → s=-4.",
+    "ficha_visual": "Card offline marcando polos (×) e zero (○) no plano-s.",
+    "alvo_video": "polos e zeros função de transferência plano s"
+  }
+]
