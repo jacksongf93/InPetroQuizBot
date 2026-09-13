@@ -270,7 +270,9 @@ def setup_webhook():
             time.sleep(5)
 
 
+# Configure the Telegram webhook when the module is loaded by Gunicorn/Render.
+threading.Thread(target=setup_webhook, daemon=True).start()
+
 if __name__ == "__main__":
-    threading.Thread(target=setup_webhook, daemon=True).start()
     port = int(os.getenv("PORT", "10000"))
     app.run(host="0.0.0.0", port=port)
