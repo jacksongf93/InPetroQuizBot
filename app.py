@@ -323,7 +323,7 @@ def start_individual_quiz(chat_id, user_id):
 def send_group_question(chat_id, index, session_id):
     current = group_sessions.get(chat_id)
     if not current or current.get("session_id") != session_id:
-        return
+        return None
 
     if index >= len(QUESTIONS):
         group_sessions.pop(chat_id, None)
@@ -334,7 +334,7 @@ def send_group_question(chat_id, index, session_id):
                 f"Fim das {len(QUESTIONS)} questões."
             )
         })
-        return
+        return None
 
     q = QUESTIONS[index]
     shuffled, correct_index = shuffled_question(q)
@@ -350,14 +350,16 @@ def send_group_question(chat_id, index, session_id):
         "is_anonymous": "false",
         "correct_option_id": str(correct_index),
         "explanation": short_explanation(q),
-        "allows_multiple_answers": "false",
-        "open_period": str(seconds)
+        "allows_multiple_answers": "false"
     })
 
     poll_id = result["poll"]["id"]
-    group_sessions[chat_id]["poll_message_id"] = result["message_id"]
-    group_sessions[chat_id]["current_poll_id"] = poll_id
-    group_sessions[chat_id].setdefault("finished_polls", set())
+    message_id = result["message_id"]
+
+    current["index"] = index
+    current["current_poll_id"] = poll_id
+    current["poll_message_id"] = message_id
+
     poll_map[poll_id] = {
         "mode": "group",
         "chat_id": chat_id,
@@ -365,82 +367,79 @@ def send_group_question(chat_id, index, session_id):
         "index": index
     }
 
-    group_sessions[chat_id]["index"] = index
-
-    # Telegram itself closes the poll after open_period.
-    # We wait a few seconds, publish the resolution, then send the next question.
-    timer = threading.Timer(
-        seconds + 1,
-        finish_group_question,
-        args=(chat_id, poll_id, index, session_id)
-    )
-    timer.daemon = True
-    timer.start()
+    return {
+        "poll_id": poll_id,
+        "message_id": message_id,
+        "seconds": seconds
+    }
 
 
-def finish_group_question(chat_id, poll_id, index, session_id):
-    current = group_sessions.get(chat_id)
-    if not current or current.get("session_id") != session_id:
-        return
+def run_group_quiz(chat_id, session_id):
+    """
+    One worker controls the whole group quiz.
+    It does not wait for voters and does not depend on Telegram poll-close updates.
+    When the time ends, it closes the current poll and immediately publishes the next question.
+    """
+    for index in range(len(QUESTIONS)):
+        current = group_sessions.get(chat_id)
+        if not current or current.get("session_id") != session_id or current.get("stopped"):
+            return
 
-    finished = current.setdefault("finished_polls", set())
-    if poll_id in finished:
-        return
+        sent = send_group_question(chat_id, index, session_id)
+        if not sent:
+            return
 
-    # Ignore a stale timer/update from an older question.
-    if current.get("current_poll_id") != poll_id:
-        return
+        # Wait only for this question's own time.
+        deadline = time.time() + sent["seconds"]
+        while time.time() < deadline:
+            current = group_sessions.get(chat_id)
+            if not current or current.get("session_id") != session_id or current.get("stopped"):
+                return
+            time.sleep(min(0.5, max(0.0, deadline - time.time())))
 
-    finished.add(poll_id)
-    q = QUESTIONS[index]
+        current = group_sessions.get(chat_id)
+        if not current or current.get("session_id") != session_id or current.get("stopped"):
+            return
 
-    # Backup closure. Normally Telegram already closed it through open_period.
-    try:
-        message_id = current.get("poll_message_id")
-        if message_id:
+        # Close exactly at the end of the allotted time.
+        try:
             tg("stopPoll", {
                 "chat_id": chat_id,
-                "message_id": message_id
+                "message_id": sent["message_id"]
             })
-    except Exception:
-        pass
+        except Exception:
+            pass
 
-    tg("sendMessage", {
-        "chat_id": chat_id,
-        "text": f'💡 {q["id"]} — Resolução\n{q.get("resolucao", "").strip()}'
-    })
+        poll_map.pop(sent["poll_id"], None)
+        current["current_poll_id"] = None
 
-    poll_map.pop(poll_id, None)
-    current["current_poll_id"] = None
+        # NO extra 4s/10s pause: next question goes out immediately.
 
-    # Small interval before the next card.
-    timer = threading.Timer(
-        4,
-        send_group_question,
-        args=(chat_id, index + 1, session_id)
-    )
-    timer.daemon = True
-    current["next_timer"] = timer
-    timer.start()
+    # Finished all questions.
+    current = group_sessions.get(chat_id)
+    if current and current.get("session_id") == session_id and not current.get("stopped"):
+        group_sessions.pop(chat_id, None)
+        tg("sendMessage", {
+            "chat_id": chat_id,
+            "text": (
+                f"🏁 In Petro — Quiz concluído!\n\n"
+                f"Fim das {len(QUESTIONS)} questões."
+            )
+        })
 
 
 def start_group_quiz(chat_id):
     old = group_sessions.get(chat_id)
     if old:
-        for key in ("next_timer",):
-            timer = old.get(key)
-            try:
-                if timer:
-                    timer.cancel()
-            except Exception:
-                pass
+        old["stopped"] = True
 
     session_id = time.time_ns()
     group_sessions[chat_id] = {
         "session_id": session_id,
         "index": 0,
-        "finished_polls": set(),
-        "current_poll_id": None
+        "current_poll_id": None,
+        "poll_message_id": None,
+        "stopped": False
     }
 
     tg("sendMessage", {
@@ -450,28 +449,39 @@ def start_group_quiz(chat_id):
             f"{len(QUESTIONS)} questões.\n"
             "⏱ O tempo varia automaticamente conforme o tipo e a dificuldade "
             "de cada questão.\n\n"
-            "Questões diretas terão menos tempo; cálculos e análises terão mais."
+            "Quando o tempo acaba, a enquete fecha e a próxima questão entra imediatamente."
         )
     })
 
-    send_group_question(chat_id, 0, session_id)
+    worker = threading.Thread(
+        target=run_group_quiz,
+        args=(chat_id, session_id),
+        daemon=True
+    )
+    group_sessions[chat_id]["worker"] = worker
+    worker.start()
 
 
 def stop_group_quiz(chat_id):
-    if chat_id in group_sessions:
-        current = group_sessions.get(chat_id, {})
-        timer = current.get("next_timer")
+    current = group_sessions.get(chat_id)
+    if current:
+        current["stopped"] = True
+
         try:
-            if timer:
-                timer.cancel()
+            message_id = current.get("poll_message_id")
+            if message_id:
+                tg("stopPoll", {
+                    "chat_id": chat_id,
+                    "message_id": message_id
+                })
         except Exception:
             pass
+
         group_sessions.pop(chat_id, None)
         tg("sendMessage", {
             "chat_id": chat_id,
             "text": "⏹ Quiz cronometrado encerrado."
         })
-
 
 def handle_update(update):
     msg = update.get("message")
@@ -511,18 +521,6 @@ def handle_update(update):
                     "/reiniciar — volta à questão 1"
                 )
             })
-
-    poll = update.get("poll")
-    if poll and poll.get("is_closed"):
-        poll_id = poll.get("id")
-        info = poll_map.get(poll_id)
-        if info and info.get("mode") == "group":
-            finish_group_question(
-                info["chat_id"],
-                poll_id,
-                info["index"],
-                info["session_id"]
-            )
 
     pa = update.get("poll_answer")
     if pa:
@@ -579,7 +577,7 @@ def setup_webhook():
                     "url": url,
                     "drop_pending_updates": "true",
                     "allowed_updates": json.dumps(
-                        ["message", "poll_answer", "poll"]
+                        ["message", "poll_answer"]
                     )
                 }
             )
