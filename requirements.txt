@@ -1,4 +1,4 @@
-Flask>=3.0,<4
-Pillow>=10,<12
-requests>=2.31,<3
-gunicorn>=22,<24
+Flask==3.0.3
+gunicorn==22.0.0
+requests==2.32.3
+Pillow==10.4.0
