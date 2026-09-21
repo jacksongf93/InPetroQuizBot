@@ -37,7 +37,12 @@
     ],
     "resolucao": "Para uma senoide: Vrms = Vp/√2. Logo, Vrms = 10/√2 = 5√2 ≈ 7,07 V.",
     "ficha_visual": "Card offline com senoide marcada em Vp=10 V e fórmula Vrms=Vp/√2.",
-    "alvo_video": "valor eficaz RMS de sinal senoidal"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Eletrônica analógica e digital.",
+    "video_status": null
   },
   {
     "id": "IP-I-002",
@@ -80,7 +85,12 @@
     ],
     "resolucao": "Para grandezas independentes em uma soma/subtração, combinam-se as incertezas em quadratura: uc=√[u(x)²+u(y)²+u(z)²]=√(0,0081+0,0144+0,0144)=√0,0369≈0,192.",
     "ficha_visual": "Card offline com a regra de propagação em quadratura e o cálculo linha a linha.",
-    "alvo_video": "propagação e combinação de incertezas padrão"
+    "alvo_video": "Incerteza padrão combinada",
+    "video": "https://www.youtube.com/watch?v=IKpICq3F3Kc",
+    "video_title": "Metrologia — cálculo de incerteza",
+    "video_timestamp": null,
+    "referencia_curta": "VIM/GUM — calibração, rastreabilidade e incerteza.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-003",
@@ -120,7 +130,12 @@
     ],
     "resolucao": "dr = γfluido/γágua. Portanto, γfluido = 0,82×10.000 = 8.200 N/m³.",
     "ficha_visual": "Card offline comparando densidade relativa, densidade e peso específico.",
-    "alvo_video": "densidade relativa e peso específico em mecânica dos fluidos"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Mecânica dos fluidos.",
+    "video_status": null
   },
   {
     "id": "IP-I-004",
@@ -160,7 +175,12 @@
     ],
     "resolucao": "O elemento-chave é a mudança lenta da indicação com o passar do tempo, sem alteração correspondente no valor verdadeiro da grandeza: isso é deriva.",
     "ficha_visual": "Card offline 'Deriva x Histerese x Repetibilidade' com exemplos curtos.",
-    "alvo_video": "deriva instrumental metrologia"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "VIM — características metrológicas.",
+    "video_status": null
   },
   {
     "id": "IP-I-005",
@@ -200,7 +220,12 @@
     ],
     "resolucao": "Vs/Vr = 2/0,020 = 100. Então SNR=20log10(100)=20×2=40 dB.",
     "ficha_visual": "Card offline com razão linear x dB e exemplo resolvido.",
-    "alvo_video": "relação sinal ruído SNR em dB"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Eletrônica analógica e digital.",
+    "video_status": null
   },
   {
     "id": "IP-I-006",
@@ -240,7 +265,12 @@
     ],
     "resolucao": "A questão pede somente a faixa de temperatura. Para temperaturas muito baixas, o tipo T é uma escolha clássica, enquanto R, S e B são associados a temperaturas altas.",
     "ficha_visual": "Card offline comparando faixas típicas dos termopares T, J, K, N, R, S e B.",
-    "alvo_video": "tipos de termopar e faixas de temperatura"
+    "alvo_video": "Seleção de termopar",
+    "video": "https://www.youtube.com/watch?v=3tjPbP7RAB0",
+    "video_title": "Termopares — tipos e seleção",
+    "video_timestamp": null,
+    "referencia_curta": "Seleção de elementos primários/finais.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-007",
@@ -283,7 +313,12 @@
     ],
     "resolucao": "A identificação é feita pela forma do obturador representado no símbolo. O disco central é característico da válvula borboleta.",
     "ficha_visual": "Card offline comparando símbolos de borboleta, globo, esfera, gaveta e retenção.",
-    "alvo_video": "simbologia de válvulas em P&ID ISA"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=TGrhSMj0Q0E",
+    "video_title": "Válvulas de controle — construção e simbologia",
+    "video_timestamp": null,
+    "referencia_curta": "Elementos finais de controle.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-008",
@@ -296,7 +331,7 @@
       "tipo": "imagem_original",
       "descricao": "Ilustração técnica original em corte de válvula de esfera com esfera perfurada e alavanca."
     },
-    "enunciado": "Na ilustração técnica, o elemento de fechamento é uma esfera perfurada que gira aproximadamente 90° para alinhar ou bloquear a passagem do fluido. A válvula mostrada é do tipo",
+    "enunciado": "Considere a ilustração técnica abaixo. Pelo elemento de fechamento e pelo movimento de 1/4 de volta representados, a válvula mostrada é do tipo",
     "alternativas": [
       {
         "texto": "esfera",
@@ -326,7 +361,12 @@
     ],
     "resolucao": "Esfera perfurada + movimento de 1/4 de volta = válvula de esfera.",
     "ficha_visual": "Card offline com cortes simplificados de esfera, globo, gaveta, borboleta e diafragma.",
-    "alvo_video": "tipos construtivos de válvulas industriais"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=TGrhSMj0Q0E",
+    "video_title": "Válvulas de controle — identificação física",
+    "video_timestamp": null,
+    "referencia_curta": "Elementos finais de controle.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-009",
@@ -366,7 +406,12 @@
     ],
     "resolucao": "Q=A1v1=A2v2. Como A2/A1=(50/100)²=1/4, então v2/v1=A1/A2=4.",
     "ficha_visual": "Card offline com continuidade Q=Av e tubulação convergente.",
-    "alvo_video": "equação da continuidade mecânica dos fluidos"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Mecânica dos fluidos.",
+    "video_status": null
   },
   {
     "id": "IP-I-010",
@@ -406,7 +451,12 @@
     ],
     "resolucao": "Turndown = Qmáx/Qmín = 96/12 = 8, portanto 8:1.",
     "ficha_visual": "Card offline diferenciando range, span e turndown.",
-    "alvo_video": "turndown rangeabilidade medição de vazão"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Seleção de elementos primários/finais.",
+    "video_status": null
   },
   {
     "id": "IP-I-011",
@@ -446,7 +496,12 @@
     ],
     "resolucao": "A presença de detecção de perigo + lógica + ação automática para estado seguro caracteriza uma função instrumentada de segurança dentro de um SIS.",
     "ficha_visual": "Card offline mostrando Sensor → Lógica SIS → Elemento final → Estado seguro.",
-    "alvo_video": "SIS ESD sistemas instrumentados de segurança"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=02q0YDRXl7U",
+    "video_title": "Sistemas Instrumentados de Segurança",
+    "video_timestamp": null,
+    "referencia_curta": "IEC 61511 — SIS.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-012",
@@ -486,7 +541,12 @@
     ],
     "resolucao": "A energia de processo deve ser controlada antes da intervenção: isolar, aliviar/despressurizar e verificar a condição segura.",
     "ficha_visual": "Card offline com sequência segura de isolamento de instrumento de processo.",
-    "alvo_video": "isolamento e despressurização para manutenção de instrumentação"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Segurança do trabalho.",
+    "video_status": null
   },
   {
     "id": "IP-I-013",
@@ -526,7 +586,12 @@
     ],
     "resolucao": "pH está relacionado à atividade dos íons H+. O eletrodo de vidro desenvolve um potencial dependente dessa atividade em relação a um eletrodo de referência.",
     "ficha_visual": "Card offline com eletrodo de vidro, referência e relação pH ↔ H+.",
-    "alvo_video": "princípio de funcionamento do eletrodo de pH"
+    "alvo_video": null,
+    "video": "https://cx.endress.com/analise_liquidos",
+    "video_title": "Análise de líquidos — pH",
+    "video_timestamp": null,
+    "referencia_curta": "Analisadores de processo.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-014",
@@ -569,7 +634,12 @@
     ],
     "resolucao": "Na notação MooN, M é a quantidade mínima de canais que deve votar pela atuação entre N canais disponíveis. Logo, 2oo3 exige pelo menos 2 votos.",
     "ficha_visual": "Card offline comparando 1oo1, 1oo2, 2oo2 e 2oo3.",
-    "alvo_video": "arquiteturas de votação 1oo2 2oo3 SIS"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=02q0YDRXl7U",
+    "video_title": "SIS — arquitetura e votação",
+    "video_timestamp": null,
+    "referencia_curta": "IEC 61511 — SIS.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-015",
@@ -612,7 +682,12 @@
     ],
     "resolucao": "A presença de um nó central ao qual os demais se conectam caracteriza a topologia estrela.",
     "ficha_visual": "Card offline comparando estrela, barramento, anel e árvore.",
-    "alvo_video": "topologias de redes industriais estrela barramento anel"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=VAKjLpGTnlg",
+    "video_title": "Redes industriais — topologias",
+    "video_timestamp": null,
+    "referencia_curta": "Redes industriais.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-016",
@@ -655,7 +730,12 @@
     ],
     "resolucao": "Com 3 bits existem 8 códigos. A questão já define intervalos de 1 V. Como 5,1 V está entre 5 e 6 V, o nível é 5 decimal = 101 binário.",
     "ficha_visual": "Card offline com quantização de ADC de 3 bits e tabela decimal/binário.",
-    "alvo_video": "conversor analógico digital ADC resolução e código binário"
+    "alvo_video": "Conversão A/D",
+    "video": "https://www.youtube.com/watch?v=zaZye4MOK4M",
+    "video_title": "Conversão A/D",
+    "video_timestamp": null,
+    "referencia_curta": "Eletrônica analógica e digital.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-017",
@@ -698,7 +778,12 @@
     ],
     "resolucao": "Na identificação ISA, a primeira letra informa a variável medida/iniciadora. Em LT e LIC, L = level (nível). A LV é a válvula final da mesma malha.",
     "ficha_visual": "Card offline explicando LT, LIC e LV e a leitura básica de uma malha ISA.",
-    "alvo_video": "ISA 5.1 identificação LT LIC LV malha de nível"
+    "alvo_video": "Identificação de malha",
+    "video": "https://www.youtube.com/watch?v=9uSOetMYHLc",
+    "video_title": "ISA 5.1 — malhas e identificação",
+    "video_timestamp": null,
+    "referencia_curta": "ISA 5.1 — documentação e simbologia.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-018",
@@ -738,7 +823,12 @@
     ],
     "resolucao": "Isolamento não é sinônimo de energia zero. O trecho pode manter fluido e pressão aprisionados; por isso é necessário alívio controlado e verificação.",
     "ficha_visual": "Card offline sobre bloqueio, equalização, dreno e pressão residual.",
-    "alvo_video": "manifold transmissor diferencial isolamento e equalização"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Segurança do trabalho.",
+    "video_status": null
   },
   {
     "id": "IP-I-019",
@@ -778,7 +868,12 @@
     ],
     "resolucao": "Máximo=50,08 mm; mínimo=49,98 mm. Campo de tolerância=50,08−49,98=0,10 mm.",
     "ficha_visual": "Card offline com nominal, limite superior, limite inferior e campo de tolerância.",
-    "alvo_video": "campo de tolerância afastamentos dimensão nominal"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "VIM — características metrológicas.",
+    "video_status": null
   },
   {
     "id": "IP-I-020",
@@ -818,7 +913,12 @@
     ],
     "resolucao": "C=εA/d. Na medição de nível, a presença do produto modifica o dielétrico efetivo ε ao redor da sonda, alterando C.",
     "ficha_visual": "Card offline com capacitor, ε, A, d e aplicação em nível.",
-    "alvo_video": "medição de nível capacitiva princípio"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Medição de variáveis de processo.",
+    "video_status": null
   },
   {
     "id": "IP-I-021",
@@ -858,7 +958,12 @@
     ],
     "resolucao": "A constante de tempo associada a um polo real -a é aproximadamente 1/a. Para -100, τ≈0,01 s; para -1 e -2, τ≈1 s e 0,5 s. O modo de -100 desaparece muito antes.",
     "ficha_visual": "Card offline mostrando polos no plano-s e relação com rapidez da resposta.",
-    "alvo_video": "polos dominantes resposta transitória sistemas de controle"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Controle em malha aberta/fechada.",
+    "video_status": null
   },
   {
     "id": "IP-I-022",
@@ -898,7 +1003,12 @@
     ],
     "resolucao": "Os elementos-chave são: relação com uma referência + cadeia ininterrupta e documentada de calibrações + contribuição de cada etapa para a incerteza.",
     "ficha_visual": "Card offline com cadeia de rastreabilidade: instrumento → padrão de trabalho → padrão de referência → referência superior.",
-    "alvo_video": "VIM rastreabilidade metrológica cadeia de calibrações"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "VIM/GUM — calibração, rastreabilidade e incerteza.",
+    "video_status": null
   },
   {
     "id": "IP-I-023",
@@ -941,7 +1051,12 @@
     ],
     "resolucao": "Δp=ρv²/2 → v=√(2Δp/ρ)=√(2×3600/800)=√9=3 m/s.",
     "ficha_visual": "Card offline explicando pressão estática, total e dinâmica no Pitot.",
-    "alvo_video": "tubo de Pitot equação de Bernoulli velocidade"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=AV-PfCUtKQc",
+    "video_title": "Medição de vazão por pressão diferencial",
+    "video_timestamp": null,
+    "referencia_curta": "Mecânica dos fluidos.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-024",
@@ -981,7 +1096,12 @@
     ],
     "resolucao": "I: correta — impurezas/umidade podem prejudicar componentes pneumáticos. II: falsa — não há regra geral de maior suscetibilidade digital. III: correta — microprocessamento e diagnóstico são características típicas de transmissores inteligentes.",
     "ficha_visual": "Card offline comparando pneumático, 4–20 mA, digital e inteligente.",
-    "alvo_video": "transmissores pneumáticos analógicos digitais inteligentes"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Transmissores e sinais industriais.",
+    "video_status": null
   },
   {
     "id": "IP-I-025",
@@ -1024,7 +1144,12 @@
     ],
     "resolucao": "Percentual=(12−4)/(20−4)=8/16=0,5. Temperatura=0+0,5×100=50 °C.",
     "ficha_visual": "Card offline com fórmula geral de escalonamento 4–20 mA.",
-    "alvo_video": "escalonamento 4 20 mA LRV URV span"
+    "alvo_video": "Escalonamento 4–20 mA",
+    "video": "https://www.youtube.com/watch?v=TbYkaa9A4TM",
+    "video_title": "Sinal 4–20 mA — escalonamento",
+    "video_timestamp": null,
+    "referencia_curta": "Transmissores e sinais industriais.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-026",
@@ -1067,7 +1192,12 @@
     ],
     "resolucao": "Em Ladder, contatos em série realizam AND; ramos paralelos realizam OR. Logo, Y=A AND (B OR C).",
     "ficha_visual": "Card offline traduzindo série/paralelo Ladder para AND/OR.",
-    "alvo_video": "lógica Ladder contatos série paralelo álgebra booleana"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=pkikJr2cgwc",
+    "video_title": "CLP e linguagem Ladder",
+    "video_timestamp": null,
+    "referencia_curta": "CLPs e linguagem Ladder.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-027",
@@ -1076,8 +1206,28 @@
     "subtema": "Matriz de causa e efeito",
     "dificuldade": "Média",
     "tipo": "Afirmativa conceitual",
-    "visual": null,
-    "enunciado": "Em um projeto de instrumentação, o documento mais adequado para representar, de forma tabular, quais ações automáticas devem ocorrer quando determinadas condições de processo ou eventos são detectados é a",
+    "visual": {
+      "type": "table",
+      "headers": [
+        "Causa",
+        "Condição",
+        "Efeito"
+      ],
+      "rows": [
+        [
+          "PSHH-101",
+          "Pressão muito alta",
+          "Fecha XV-101"
+        ],
+        [
+          "LSLL-101",
+          "Nível muito baixo",
+          "Para P-101"
+        ]
+      ],
+      "note": "Matriz simplificada de causa e efeito."
+    },
+    "enunciado": "Considere a matriz simplificada de causa e efeito abaixo. Em um projeto de instrumentação, o documento mais adequado para representar, de forma tabular, quais ações automáticas devem ocorrer quando determinadas condições de processo ou eventos são detectados é a",
     "alternativas": [
       {
         "texto": "matriz de causa e efeito",
@@ -1107,7 +1257,12 @@
     ],
     "resolucao": "Quando o objetivo é relacionar eventos de entrada a ações automáticas de saída, o documento típico é a matriz de causa e efeito.",
     "ficha_visual": "Card offline comparando fluxograma, lista, folha de dados, diagrama lógico, malha e matriz causa-efeito.",
-    "alvo_video": "documentação de instrumentação matriz de causa e efeito"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "ISA 5.1 — documentação e simbologia.",
+    "video_status": null
   },
   {
     "id": "IP-I-028",
@@ -1150,7 +1305,12 @@
     ],
     "resolucao": "Ganho do inversor = -Rf/Rin = -20/5 = -4. Assim, Vo=-4×0,5=-2,0 V.",
     "ficha_visual": "Card offline com circuito inversor e fórmula de ganho.",
-    "alvo_video": "amplificador operacional inversor cálculo de ganho"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Eletrônica analógica e digital.",
+    "video_status": null
   },
   {
     "id": "IP-I-029",
@@ -1190,7 +1350,12 @@
     ],
     "resolucao": "Ladder deriva da representação de circuitos de relés: contatos e bobinas são centrais, além de temporizadores, contadores e blocos de função.",
     "ficha_visual": "Card offline com contato NA, contato NF, bobina, timer e contador.",
-    "alvo_video": "elementos básicos da linguagem Ladder"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "CLPs e linguagem Ladder.",
+    "video_status": null
   },
   {
     "id": "IP-I-030",
@@ -1230,7 +1395,12 @@
     ],
     "resolucao": "PROFINET utiliza Ethernet industrial. Os demais itens usam outras bases físicas/protocolos.",
     "ficha_visual": "Card offline 'PROFINET x PROFIBUS x DeviceNet x AS-i x HART'.",
-    "alvo_video": "PROFINET Ethernet industrial comparação protocolos"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=VAKjLpGTnlg",
+    "video_title": "Redes industriais / Ethernet industrial",
+    "video_timestamp": null,
+    "referencia_curta": "Redes industriais.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-031",
@@ -1273,7 +1443,12 @@
     ],
     "resolucao": "Tabela XOR: 00→0, 01→1, 10→1, 11→0. Portanto a saída é 1 quando as entradas são diferentes.",
     "ficha_visual": "Card offline com tabela-verdade XOR e comparação com OR.",
-    "alvo_video": "porta XOR tabela verdade lógica digital"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Eletrônica analógica e digital.",
+    "video_status": null
   },
   {
     "id": "IP-I-032",
@@ -1283,10 +1458,10 @@
     "dificuldade": "Difícil",
     "tipo": "Gráfico",
     "visual": {
-      "tipo": "grafico_original",
-      "descricao": "Bode de fase com três transdutores; em 2 Hz: TP1≈0°, TP2≈+90°, TP3≈+180°."
+      "type": "ascii",
+      "content": "DIAGRAMA DE BODE — MESMO SISTEMA\n\nMagnitude (dB)\n 20 |───────\\\n  0 |        \\\n-20 |         \\\n     +---------------- log ω\n\nFase (°)\n  0 |───────\\\n-45 |        \\\n-90 |         ─────\n     +---------------- log ω"
     },
-    "enunciado": "Um transdutor recebe uma entrada senoidal. No osciloscópio, a saída aparece aproximadamente em quadratura, adiantada 90° em relação à entrada, na frequência de 2 Hz. Pelo gráfico de fase apresentado, o transdutor utilizado é",
+    "enunciado": "Considere o mesmo diagrama de Bode apresentado abaixo. Um transdutor recebe uma entrada senoidal. No osciloscópio, a saída aparece aproximadamente em quadratura, adiantada 90° em relação à entrada, na frequência de 2 Hz. Pelo gráfico de fase apresentado, o transdutor utilizado é",
     "alternativas": [
       {
         "texto": "TP2",
@@ -1316,7 +1491,12 @@
     ],
     "resolucao": "A informação temporal é convertida em fase: uma quadratura de 90°. Basta localizar, em 2 Hz, qual curva está em torno de +90°: TP2.",
     "ficha_visual": "Card offline ensinando leitura de gráfico de fase e significado de 0°, 90° e 180°.",
-    "alvo_video": "resposta em frequência fase diagrama de Bode"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Medição de variáveis de processo.",
+    "video_status": null
   },
   {
     "id": "IP-I-033",
@@ -1326,10 +1506,10 @@
     "dificuldade": "Difícil",
     "tipo": "Gráfico",
     "visual": {
-      "tipo": "grafico_original",
-      "descricao": "Bode de magnitude com três transdutores; em 2 Hz: TP1=-6 dB, TP2=+8 dB, TP3≈0 dB."
+      "type": "ascii",
+      "content": "DIAGRAMA DE BODE — MESMO SISTEMA\n\nMagnitude (dB)\n 20 |───────\\\n  0 |        \\\n-20 |         \\\n     +---------------- log ω\n\nFase (°)\n  0 |───────\\\n-45 |        \\\n-90 |         ─────\n     +---------------- log ω"
     },
-    "enunciado": "Para medir um sinal de pressão em torno de 2 Hz sem amplificá-lo nem atenuá-lo significativamente, deve-se escolher, pelo gráfico de magnitude, o transdutor",
+    "enunciado": "Considere o mesmo diagrama de Bode apresentado abaixo. Para medir um sinal de pressão em torno de 2 Hz sem amplificá-lo nem atenuá-lo significativamente, deve-se escolher, pelo gráfico de magnitude, o transdutor",
     "alternativas": [
       {
         "texto": "TP3",
@@ -1359,7 +1539,12 @@
     ],
     "resolucao": "Em magnitude, 0 dB significa ganho 1. A curva mais próxima de 0 dB em 2 Hz é TP3.",
     "ficha_visual": "Card offline sobre dB: 0 dB=gain 1; positivo=amplificação; negativo=atenuação.",
-    "alvo_video": "diagrama de Bode magnitude 0 dB ganho unitário"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Medição de variáveis de processo.",
+    "video_status": null
   },
   {
     "id": "IP-I-034",
@@ -1402,7 +1587,12 @@
     ],
     "resolucao": "A classificação pelo número de integradores permite associar erros estacionários: tipo 0 → rampa com erro infinito; tipo 1 → rampa com erro finito; tipo 2 ou maior → rampa com erro nulo.",
     "ficha_visual": "Card offline com tabela degrau/rampa/parábola versus tipo 0/1/2.",
-    "alvo_video": "tipo do sistema erro estacionário rampa"
+    "alvo_video": null,
+    "video": null,
+    "video_title": null,
+    "video_timestamp": null,
+    "referencia_curta": "Controle em malha aberta/fechada.",
+    "video_status": null
   },
   {
     "id": "IP-I-035",
@@ -1442,7 +1632,12 @@
     ],
     "resolucao": "A parcela integral é proporcional à integral do erro. Enquanto existir erro persistente, sua contribuição continua se acumulando, conduzindo o controlador a corrigir o offset.",
     "ficha_visual": "Card offline comparando ações P, I e D em uma mesma malha.",
-    "alvo_video": "ação integral controlador PID erro estacionário"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=7fpjxwvieDA",
+    "video_title": "Controle PID — ação integral",
+    "video_timestamp": null,
+    "referencia_curta": "Controle PID.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-036",
@@ -1485,7 +1680,12 @@
     ],
     "resolucao": "T=G/(1+GH). Com H=1 e G=k/(s+1): T=[k/(s+1)]/[1+k/(s+1)] = k/(s+1+k).",
     "ficha_visual": "Card offline com fórmula de malha fechada e simplificação algébrica.",
-    "alvo_video": "função de transferência malha fechada realimentação negativa"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=eWXlSe2TMzk",
+    "video_title": "Malha aberta e malha fechada",
+    "video_timestamp": null,
+    "referencia_curta": "Controle em malha aberta/fechada.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-037",
@@ -1525,7 +1725,12 @@
     ],
     "resolucao": "O comissionamento confirma que a instalação foi construída, interligada, configurada e testada de acordo com requisitos e está pronta para operação.",
     "ficha_visual": "Card offline com sequência pré-comissionamento → testes → loop check → partida.",
-    "alvo_video": "comissionamento de instrumentação loop check"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=pONEWwpe0e0",
+    "video_title": "Manutenção e comissionamento",
+    "video_timestamp": null,
+    "referencia_curta": "Manutenção e comissionamento.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-038",
@@ -1565,7 +1770,12 @@
     ],
     "resolucao": "Ki=Kp/Ti. Se Ti não muda, elevar Kp eleva Ki na mesma proporção.",
     "ficha_visual": "Card offline relacionando formas paralela/ideal do PI e parâmetros Kp, Ti, Ki.",
-    "alvo_video": "controlador PI relação Kp Ti Ki"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=7fpjxwvieDA",
+    "video_title": "Controle PID — Kp, Ti e Ki",
+    "video_timestamp": null,
+    "referencia_curta": "Controle PID.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-039",
@@ -1608,7 +1818,12 @@
     ],
     "resolucao": "P é o ponto em que a falha potencial se torna detectável; F é a falha funcional. Técnicas preditivas procuram identificar a condição degradada durante o intervalo P-F.",
     "ficha_visual": "Card offline com Curva P-F e posicionamento de preditiva, preventiva e corretiva.",
-    "alvo_video": "curva PF manutenção preditiva RCM"
+    "alvo_video": "Curva P-F",
+    "video": "https://www.youtube.com/watch?v=pONEWwpe0e0",
+    "video_title": "Manutenção preditiva / curva P-F",
+    "video_timestamp": null,
+    "referencia_curta": "Manutenção e comissionamento.",
+    "video_status": "pendente_minutagem"
   },
   {
     "id": "IP-I-040",
@@ -1648,6 +1863,11 @@
     ],
     "resolucao": "Polos: raízes do denominador s(s²+9)=0 → s=0, s=±j3. Zero: raiz do numerador s+4=0 → s=-4.",
     "ficha_visual": "Card offline marcando polos (×) e zero (○) no plano-s.",
-    "alvo_video": "polos e zeros função de transferência plano s"
+    "alvo_video": null,
+    "video": "https://www.youtube.com/watch?v=RRjz-BnZijI",
+    "video_title": "Polos e dinâmica de sistemas",
+    "video_timestamp": null,
+    "referencia_curta": "Controle em malha aberta/fechada.",
+    "video_status": "pendente_minutagem"
   }
 ]

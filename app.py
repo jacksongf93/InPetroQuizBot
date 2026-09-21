@@ -85,6 +85,62 @@ def draw_wrapped(draw, text, xy, fnt, max_width, fill=TEXT, spacing=10):
     return y
 
 
+def draw_visual(img, d, q, y, W, pad):
+    qid=q.get("id","")
+    visual_ids={"IP-I-002","IP-I-007","IP-I-008","IP-I-014","IP-I-015","IP-I-016","IP-I-017","IP-I-023","IP-I-025","IP-I-026","IP-I-028","IP-I-031","IP-I-032","IP-I-033","IP-I-034","IP-I-036","IP-I-039"}
+    if qid not in visual_ids: return y
+    x0,x1=pad+70,W-pad-70; h=300
+    d.rounded_rectangle((x0,y,x1,y+h),radius=20,fill="#FAFCFB",outline="#DDE7E1",width=2)
+    cx=(x0+x1)//2; cy=y+h//2; f=font(25,True); fs=font(22,False)
+    if qid=="IP-I-002":
+        rows=[("Grandeza","u"),("x","0,09"),("y","0,12"),("z","0,12")]; tw=440; th=48; sx=cx-tw//2; sy=y+48
+        for r,row in enumerate(rows):
+            for c,val in enumerate(row):
+                a=sx+c*tw//2; b=sy+r*th; d.rectangle((a,b,a+tw//2,b+th),outline="#AEBDB5",width=2); d.text((a+25,b+10),val,font=fs,fill=TEXT)
+    elif qid=="IP-I-007":
+        d.line((x0+80,cy,x1-80,cy),fill=TEXT,width=7); d.ellipse((cx-65,cy-65,cx+65,cy+65),outline=TEXT,width=6); d.line((cx-45,cy-45,cx+45,cy+45),fill=TEXT,width=8); d.line((cx+45,cy-45,cx-45,cy+45),fill=TEXT,width=8)
+    elif qid=="IP-I-008":
+        d.ellipse((cx-85,cy-85,cx+85,cy+85),fill="#CBD5E1",outline=TEXT,width=7); d.ellipse((cx-62,cy-62,cx+62,cy+62),fill="#64748B"); d.rounded_rectangle((cx-65,cy-18,cx+65,cy+18),radius=18,fill="white"); d.line((cx,cy-85,cx,y+45),fill=TEXT,width=8); d.line((cx,y+45,cx+105,y+45),fill=TEXT,width=10)
+    elif qid=="IP-I-014":
+        for i,xx in enumerate((cx-210,cx,cx+210),1): d.ellipse((xx-43,y+45,xx+43,y+131),fill="#EAF3EF",outline=GREEN,width=4); d.text((xx-28,y+73),f"PT{i}",font=fs,fill=TEXT); d.line((xx,y+131,cx,y+190),fill="#66736C",width=3)
+        d.rounded_rectangle((cx-85,y+190,cx+85,y+250),radius=12,fill="#FFF1C7",outline=GOLD,width=4); d.text((cx-38,y+205),"2oo3",font=f,fill=TEXT)
+    elif qid=="IP-I-015":
+        d.rounded_rectangle((cx-75,cy-35,cx+75,cy+35),radius=12,fill="#FFF1C7",outline=GOLD,width=4); d.text((cx-47,cy-14),"SWITCH",font=fs,fill=TEXT)
+        pts=[(x0+110,y+55),(x1-110,y+55),(x0+110,y+235),(x1-110,y+235)]
+        for lab,(xx,yy) in zip(("CLP","IHM","E/S","SCADA"),pts): d.line((cx,cy,xx,yy),fill="#66736C",width=4); d.rounded_rectangle((xx-55,yy-28,xx+55,yy+28),radius=10,outline=GREEN,width=3); d.text((xx-35,yy-12),lab,font=fs,fill=TEXT)
+    elif qid=="IP-I-016":
+        d.line((x0+110,y+230,x1-90,y+230),fill=TEXT,width=3); d.line((x0+110,y+230,x0+110,y+55),fill=TEXT,width=3); pts=[(x0+110,y+220),(x0+210,y+220),(x0+210,y+195),(x0+310,y+195),(x0+310,y+165),(x0+410,y+165),(x0+410,y+135),(x0+510,y+135),(x0+510,y+105),(x0+610,y+105)]; d.line(pts,fill=GREEN,width=6); d.text((x1-170,y+245),"Vin",font=fs,fill=TEXT); d.text((x0+125,y+60),"código",font=fs,fill=TEXT)
+    elif qid=="IP-I-017":
+        d.rectangle((cx-260,y+65,cx+260,y+235),outline=TEXT,width=5); d.ellipse((cx-205,y+95,cx-115,y+185),outline=GREEN,width=5); d.text((cx-194,y+120),"LT",font=f,fill=TEXT); d.ellipse((cx-45,y+95,cx+45,y+185),outline=GREEN,width=5); d.text((cx-37,y+120),"LIC",font=fs,fill=TEXT); d.line((cx-115,y+140,cx-45,y+140),fill=TEXT,width=4); d.line((cx+45,y+140,cx+170,y+140),fill=TEXT,width=4); d.polygon([(cx+170,y+110),(cx+220,y+140),(cx+170,y+170)],outline=TEXT); d.text((cx+160,y+185),"LV",font=fs,fill=TEXT)
+    elif qid=="IP-I-023":
+        d.line((x0+70,cy,x1-70,cy),fill=TEXT,width=8); d.line((cx-40,cy,cx-40,y+70),fill=GREEN,width=7); d.line((cx+40,cy,cx+40,y+115),fill=GREEN,width=7); d.line((cx-40,y+70,cx+40,y+70),fill=GREEN,width=5); d.text((cx-170,y+210),"Tubo de Pitot / Δp",font=f,fill=TEXT)
+    elif qid=="IP-I-025":
+        d.line((x0+100,y+230,x1-100,y+70),fill=GREEN,width=7); d.text((x0+70,y+240),"4 mA / 0 °C",font=fs,fill=TEXT); d.text((x1-260,y+45),"20 mA / 100 °C",font=fs,fill=TEXT); d.ellipse((cx-7,cy-7,cx+7,cy+7),fill=GOLD); d.text((cx+18,cy-18),"12 mA",font=f,fill=TEXT)
+    elif qid=="IP-I-026":
+        lx=x0+100; rx=x1-100; d.line((lx,y+45,lx,y+255),fill=TEXT,width=5); d.line((rx,y+45,rx,y+255),fill=TEXT,width=5); d.line((lx,y+105,lx+120,y+105),fill=TEXT,width=4); d.text((lx+130,y+82),"[ A ]",font=f,fill=TEXT); d.line((lx+220,y+105,lx+300,y+105),fill=TEXT,width=4); d.text((lx+310,y+82),"[ B ]",font=f,fill=TEXT); d.line((lx+400,y+105,rx,y+105),fill=TEXT,width=4); d.line((lx+280,y+105,lx+280,y+190),fill=TEXT,width=3); d.line((lx+280,y+190,lx+400,y+190),fill=TEXT,width=3); d.text((lx+310,y+167),"[ C ]",font=f,fill=TEXT); d.line((lx+400,y+190,lx+400,y+105),fill=TEXT,width=3); d.text((rx-85,y+82),"( Y )",font=f,fill=GREEN)
+    elif qid=="IP-I-028":
+        d.polygon([(cx-40,y+65),(cx-40,y+235),(cx+130,cy)],outline=TEXT); d.text((cx-22,y+105),"−",font=f,fill=TEXT); d.text((cx-22,y+190),"+",font=f,fill=TEXT); d.line((x0+100,y+115,cx-40,y+115),fill=TEXT,width=4); d.text((x0+110,y+78),"Vin   Rin=5 kΩ",font=fs,fill=TEXT); d.line((cx+130,cy,x1-90,cy),fill=TEXT,width=4); d.line((cx+100,cy,x1-150,y+45,x0+250,y+45,x0+250,y+115),fill=GREEN,width=4); d.text((cx-15,y+15),"Rf=20 kΩ",font=fs,fill=TEXT)
+    elif qid=="IP-I-031":
+        d.text((cx-90,y+45),"A ⊕ B",font=font(40,True),fill=GREEN); rows=[("A","B","Y"),("0","0","0"),("0","1","1"),("1","0","1"),("1","1","0")]; sy=y+105
+        for r,row in enumerate(rows): d.text((cx-100,sy+r*32),"     ".join(row),font=fs,fill=TEXT)
+    elif qid in {"IP-I-032","IP-I-033","IP-I-034"}:
+        import math
+        ox=x0+80; oy=y+240; d.line((ox,y+45,ox,oy),fill=TEXT,width=3); d.line((ox,oy,x1-60,oy),fill=TEXT,width=3); d.text((x1-120,oy+10),"f",font=fs,fill=TEXT)
+        curves=[(GREEN,0),(GOLD,35),("#66736C",-30)]
+        for ci,(col,off) in enumerate(curves):
+            pts=[]
+            for k in range(120):
+                xx=ox+10+k*5.2; yy=oy-95-off-45*math.tanh((k-55)/22) if qid!="IP-I-034" else oy-30-1.1*k+0.006*k*k
+                pts.append((xx,yy))
+            d.line(pts,fill=col,width=4); d.text((x1-120,y+65+ci*35),f"TP{ci+1}",font=fs,fill=col)
+        d.line((cx,y+45,cx,oy),fill="#AAB3AE",width=2); d.text((cx+8,oy-25),"2 Hz",font=fs,fill=TEXT)
+    elif qid=="IP-I-036":
+        d.line((x0+70,cy,cx-170,cy),fill=TEXT,width=4); d.ellipse((cx-170,cy-30,cx-110,cy+30),outline=TEXT,width=4); d.text((cx-154,cy-19),"Σ",font=f,fill=TEXT); d.line((cx-110,cy,cx-40,cy),fill=TEXT,width=4); d.rectangle((cx-40,cy-45,cx+145,cy+45),outline=GREEN,width=5); d.text((cx-5,cy-15),"G(s)=k/(s+1)",font=fs,fill=TEXT); d.line((cx+145,cy,x1-70,cy),fill=TEXT,width=4); d.line((cx+220,cy,cx+220,y+245,cx-140,y+245,cx-140,cy+30),fill=TEXT,width=3)
+    elif qid=="IP-I-039":
+        pts=[(x0+80,y+65),(x0+220,y+78),(x0+360,y+105),(x0+500,y+150),(x0+650,y+230)]; d.line(pts,fill=GREEN,width=7); d.ellipse((x0+213,y+71,x0+227,y+85),fill=GOLD); d.text((x0+190,y+38),"P",font=f,fill=TEXT); d.ellipse((x0+643,y+223,x0+657,y+237),fill=GOLD); d.text((x0+665,y+215),"F",font=f,fill=TEXT); d.text((cx-80,y+250),"intervalo P–F",font=fs,fill=TEXT)
+    return y+h+32
+
+
 def render_card(q, shuffled):
     W = 1080
     pad = 72
@@ -133,8 +189,7 @@ def render_card(q, shuffled):
     )
     y += 38
 
-    # The actual technical visual will be embedded in a later visual pass.
-    # Do not show a generic "consider the figure" box when no figure was rendered.
+    y = draw_visual(img, d, q, y, W, pad)
 
     for i, alt in enumerate(shuffled):
         letter = LETTERS[i]
@@ -459,7 +514,46 @@ def stop_group_quiz(chat_id):
         })
 
 
+def send_share_card_inline(inline_query):
+    """Return the In Petro share card when the bot is invoked inline."""
+    query_id = inline_query["id"]
+    card_text = (
+        "🎲 <b>Quiz ‘IN PETRO — Instrumentação’</b>\n"
+        f"🖋 <b>{len(QUESTIONS)} perguntas</b>\n\n"
+        "Teste seus conhecimentos em Instrumentação."
+    )
+    keyboard = {
+        "inline_keyboard": [
+            [{"text": "▶️ Iniciar este quiz", "url": "https://t.me/InPetroQuizBot?start=quiz"}],
+            [{"text": "👥 Iniciar quiz no grupo", "url": "https://t.me/InPetroQuizBot?startgroup=quiz"}],
+            [{"text": "↗️ Compartilhar quiz", "switch_inline_query_chosen_chat": {"query": "inpetro"}}]
+        ]
+    }
+    result = {
+        "type": "article",
+        "id": "inpetro-instrumentacao-40",
+        "title": "IN PETRO — Instrumentação",
+        "description": f"{len(QUESTIONS)} perguntas • Quiz de Instrumentação",
+        "input_message_content": {
+            "message_text": card_text,
+            "parse_mode": "HTML"
+        },
+        "reply_markup": keyboard
+    }
+    tg("answerInlineQuery", {
+        "inline_query_id": query_id,
+        "results": json.dumps([result], ensure_ascii=False),
+        "cache_time": "1",
+        "is_personal": "true"
+    })
+
+
 def handle_update(update):
+    iq = update.get("inline_query")
+    if iq:
+        send_share_card_inline(iq)
+        return
+
     msg = update.get("message")
 
     if msg and msg.get("text"):
@@ -553,7 +647,7 @@ def setup_webhook():
                     "url": url,
                     "drop_pending_updates": "true",
                     "allowed_updates": json.dumps(
-                        ["message", "poll_answer"]
+                        ["message", "poll_answer", "inline_query"]
                     )
                 }
             )
