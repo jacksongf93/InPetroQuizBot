@@ -14,12 +14,18 @@ QUIZZES={'instrumentacao_01':{'title':'Simulado Instrumentação 01','descriptio
 app=Flask(__name__)
 lock=threading.RLock(); sessions={}; polls={}; groups={}
 
+def card_path(qid):
+    # GitHub mobile upload may flatten the cards folder into repository root.
+    root = BASE / f"{qid}.png"
+    nested = BASE / "cards" / f"{qid}.png"
+    return root if root.exists() else nested
+
 def validate():
     ids=[q['id'] for q in QUESTIONS]
     assert len(ids)==len(set(ids))==40
     for q in QUESTIONS:
         assert len(q['alternativas'])==5 and sum(bool(a.get('correta')) for a in q['alternativas'])==1
-        assert (BASE/'cards'/f"{q['id']}.png").exists()
+        assert (card_path(q['id'])).exists()
     for z in QUIZZES.values():
         assert all(x in BANK for x in z['question_ids'])
 validate()
@@ -60,7 +66,7 @@ def send_private(uid):
         if not s or s['done']: return
         if s['i']>=len(s['items']): return prefinish_private(uid)
         item=s['items'][s['i']]; q=BANK[item['id']]; chat=s['chat_id']; pos=s['i']+1
-    with open(BASE/'cards'/f"{item['id']}.png",'rb') as f:
+    with open(card_path(item['id']),'rb') as f:
         tg('sendPhoto',{'chat_id':chat,'caption':f'Questão {pos}/40'},files={'photo':f})
     poll=tg('sendPoll',{'chat_id':chat,'question':f'Questão {pos}/40','options':json.dumps(item['options'],ensure_ascii=False),'type':'quiz','correct_option_id':item['correct'],'is_anonymous':'false','reply_markup':kb([[btn('⏭ Pular questão',f'skip:{uid}:{pos}')]])})
     with lock:
@@ -86,7 +92,7 @@ def review_private(uid,kind):
     for r in records:
         item=r['item']; qid=item['id']; correct=item['options'][item['correct']]
         marked='Em branco' if r['choice'] is None else item['options'][r['choice']]
-        with open(BASE/'cards'/f'{qid}.png','rb') as f:
+        with open(card_path(qid),'rb') as f:
             tg('sendPhoto',{'chat_id':chat,'caption':f'🔎 Revisão • {qid}'},files={'photo':f})
         tg('sendMessage',{'chat_id':chat,'text':f'✍️ Sua resposta: <b>{marked}</b>\n✅ Correta: <b>{correct}</b>','parse_mode':'HTML'})
     tg('sendMessage',{'chat_id':chat,'text':'Fim da revisão.','reply_markup':kb([[btn('🏁 Finalizar simulado',f'finish:{uid}')]])})
@@ -113,7 +119,7 @@ def send_group(chat_id):
         if not g or g['stopped']: return
         if g['i']>=len(g['items']): return finish_group(chat_id)
         item=g['items'][g['i']]; pos=g['i']+1
-    with open(BASE/'cards'/f"{item['id']}.png",'rb') as f: tg('sendPhoto',{'chat_id':chat_id,'caption':f'Questão {pos}/40 • 30 s'},files={'photo':f})
+    with open(card_path(item['id']),'rb') as f: tg('sendPhoto',{'chat_id':chat_id,'caption':f'Questão {pos}/40 • 30 s'},files={'photo':f})
     p=tg('sendPoll',{'chat_id':chat_id,'question':f'Questão {pos}/40','options':json.dumps(item['options'],ensure_ascii=False),'type':'quiz','correct_option_id':item['correct'],'is_anonymous':'false','open_period':30})
     pid=p['poll']['id']
     with lock:
